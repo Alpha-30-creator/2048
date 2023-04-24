@@ -7,7 +7,7 @@ using namespace std;
 
 //Function to load a saved game
 vector<vector<int>> loadGame(string username) {
-    //create a 2D vector of int
+    //create a 2D vector of int to store board
     vector<vector<int>> board;
     //open file loadgame.txt
     ifstream fin;

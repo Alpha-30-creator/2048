@@ -156,31 +156,31 @@ bool check_finish(int size, vector<vector<int>> &board) {
             }
         }
     }
-    // if reached here, board is full, need to check for combinations now
+    // if reached here, board is full, need to check for combinations now (described below)
 
     // For combinations, vertical and horizontal checks need to be made.
     // Note: Left-to-right or right-to-left (likewise for vertical) does not matter.
     
     // *Explanation of logic*
     // Going from left-to-right (similar approach for top-to-down):
-    // Variable 'target_sum' contains the sum that will be created if combination is present.
+    // Variable 'target_sum' contains the sum that needs to be created if combination is present.
     // Variable 'current_sum' contains the current sum.
     // Loop through each row and iterate through each tile in each row.
     //      target_sum is 0 only until a non-zero tile is found in the row.
-    //      when non-zero tile is found, target_sum = twice the value of the tile (for combination) and current_sum = value of tile
+    //      when non-zero tile is found, target_sum = twice the value of the tile (needed for combination) and current_sum = value of tile
     //      if zero tile found, 
     //          continue in the loop, maintaining target_sum and current_sum
     //      if non-zero tile found again,
     //          add it to current_sum
-    //      if current_sum == target_sum,
-    //          combination is found
-    //      if current_sum != target_sum (it means the non-zero tile is not the same as the previous non-zero tile found),
-    //          target_sum is now twice the new non-zero tile and current sum is the new non-zero tile
+    //          if current_sum == target_sum,
+    //              combination is found
+    //          if current_sum != target_sum (it means the non-zero tile is not the same as the previous non-zero tile found),
+    //              target_sum is now changed to twice the new non-zero tile and current sum is the new non-zero tile
     // Loop
     // return false if no combination found
 
 
-    // Checking horizontally
+    // Checking horizontally (logic described above)
     for (int i = 0; i < size; i++) {
         
         int target_sum = 0;
@@ -208,7 +208,7 @@ bool check_finish(int size, vector<vector<int>> &board) {
         } 
     }
 
-    // Checking vertically
+    // Checking vertically (logic described above)
     for (int i = 0; i < size; i++) {
 
         int target_sum = 0;

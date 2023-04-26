@@ -2,6 +2,8 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+#include <utility>
+
 using namespace std;
 
 // Function to initialize the board takes size of the board and the board itself as input and returns the 2D board
@@ -105,4 +107,36 @@ void calculateScore(char move, int &score, int size, vector<vector<int>> &board)
             }
         }
     }
+}
+
+// (generate_random_tile) := Function to generate a random 2-tile after every move is done.
+//                           Modifies the board (2D vector).
+// Note: A random tile is generated no matter what as long as the game is running (i.e. the game is not finished)
+//      because after every successful move, the total number of filled tiles must decrease by at least 1, making
+//      room for another tile
+void generate_random_tile(int size, vector<vector<int>> &board) {
+    // Create an array containing pairs of coordinates (i, j) of currently empty tiles
+    pair<int, int> empty_tiles[size * size];
+    
+    // Find all empty tiles and store their coordinates (i, j) as 'pairs' in the empty_tiles array. Keep count of # of empty tiles. 
+    int number_of_empty_tiles = 0;
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            if (board[i][j] == 0) {
+                empty_tiles[number_of_empty_tiles] = make_pair(i, j);
+                number_of_empty_tiles++;
+            }
+        }
+    }
+
+    // Seed the random number generator
+    srand(time(0));
+
+    // Select a random index number in the array, thereby selecting a random coordinate from the tiles.
+    int random_array_index = rand() % number_of_empty_tiles;
+    pair<int, int> random_pair = empty_tiles[random_array_index];
+
+    // Assign the value 2 to the randomly chosen tile
+    board[random_pair.first][random_pair.second] = 2;
+ 
 }

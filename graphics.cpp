@@ -34,6 +34,26 @@ string get_chars_util(char ch, int number_of_chars) {
 }
 
 // Function to print menu for the player when game is started
+void print_instructions() {
+    cout << "Instructions:\n";
+    cout << "Use the arrow keys to move the tiles. When two tiles with the same number touch, they merge into one!\n\n";
+}
+// Function to display loading message
+void display_loading() {
+    cout << "Loading game...\n\n";
+// Function to display the current state of the board
+void display_board(vector<vector<int>>& board) {
+    int size = board.size();
+    cout << "Current Board:\n\n";
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            cout << setw(5) << board[i][j];
+        }
+        cout << '\n';
+    }
+    cout << '\n';
+}
+}
 // This function also uses the color codes defined in color.h header file and uses the utility function get_chars_util to print character
 void print_menu(string username) {
     int width = 80;

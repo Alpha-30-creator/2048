@@ -1,10 +1,8 @@
 #include "mover.h"
-#include <iostream>
-#include <string>
 
 using namespace std;
 
-void mover_update(auto a, int n, int x, int y, int dx, int dy) {
+void mover_update(vector<vector<int>> &a, int n, int x, int y, int dx, int dy) {
 	int new_x = x + dx, new_y = y + dy;
 	if (new_x < 1 || new_y < 1 || new_x > n || new_y > n) return;
 
@@ -21,7 +19,7 @@ void mover_update(auto a, int n, int x, int y, int dx, int dy) {
 }	
 
 
-void move(auto a, int n, string dir) {
+void move(vector<vector<int>> &a, int n, string dir) {
 	for (char &i : dir) {
 		i = tolower(i);
 	}

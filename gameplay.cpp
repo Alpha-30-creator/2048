@@ -140,3 +140,101 @@ void generate_random_tile(int size, vector<vector<int>> &board) {
     board[random_pair.first][random_pair.second] = 2;
  
 }
+
+
+// (check_finish) := Function to check if the game has finished.
+// Game finishes when the board is full && there are no possible combinations left on the board
+// If game finished, returns true. Else returns false.
+
+bool check_finish(int size, vector<vector<int>> &board) {
+
+    // Check if board is full by checking if any tile is 0.
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            if (board[i][j] == 0) {
+                return false; // board is not full
+            }
+        }
+    }
+    // if reached here, board is full, need to check for combinations now
+
+    // For combinations, vertical and horizontal checks need to be made.
+    // Note: Left-to-right or right-to-left (likewise for vertical) does not matter.
+    
+    // *Explanation of logic*
+    // Going from left-to-right (similar approach for top-to-down):
+    // Variable 'target_sum' contains the sum that will be created if combination is present.
+    // Variable 'current_sum' contains the current sum.
+    // Loop through each row and iterate through each tile in each row.
+    //      target_sum is 0 only until a non-zero tile is found in the row.
+    //      when non-zero tile is found, target_sum = twice the value of the tile (for combination) and current_sum = value of tile
+    //      if zero tile found, 
+    //          continue in the loop, maintaining target_sum and current_sum
+    //      if non-zero tile found again,
+    //          add it to current_sum
+    //      if current_sum == target_sum,
+    //          combination is found
+    //      if current_sum != target_sum (it means the non-zero tile is not the same as the previous non-zero tile found),
+    //          target_sum is now twice the new non-zero tile and current sum is the new non-zero tile
+    // Loop
+    // return false if no combination found
+
+
+    // Checking horizontally
+    for (int i = 0; i < size; i++) {
+        
+        int target_sum = 0;
+        int current_sum = 0;
+        
+        for (int j = 0; j < size; j++) {
+            if (target_sum == 0) {
+            
+                target_sum = board[i][j] * 2;
+                current_sum = board[i][j];
+            
+            } else {
+            
+                current_sum += board[i][j];
+            
+                if (current_sum == target_sum) {
+                    return false; // combination is present
+                } else if (board[i][j] == 0) {
+                    continue;
+                } else {
+                    target_sum = board[i][j] * 2;
+                    current_sum = board[i][j];
+                }
+            }
+        } 
+    }
+
+    // Checking vertically
+    for (int i = 0; i < size; i++) {
+
+        int target_sum = 0;
+        int current_sum = 0;
+        
+        for (int j = 0; j < size; j++) {
+            if (target_sum == 0) {
+                
+                target_sum = board[j][i] * 2;
+                current_sum = board[j][i];
+            
+            } else {
+                
+                current_sum += board[j][i];
+                
+                if (current_sum == target_sum) {
+                    return true; // combination is present
+                } else if (board[j][i] == 0) {
+                    continue;
+                } else {
+                    target_sum = board[j][i] * 2;
+                    current_sum = board[j][i];
+                }
+            }
+        } 
+    }
+
+    return false;
+}

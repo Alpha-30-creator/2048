@@ -89,3 +89,10 @@ void print_menu(string username) {
     cout << red << get_chars_util('-', 80) << def << "\n\n";
     cout << bold_off;
 }
+
+//function to clear the screen
+void clear_screen() {
+    for (int i = 0; i < 20; i++) {
+        cout << "\n";
+    }
+}

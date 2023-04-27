@@ -153,7 +153,7 @@ void generate_random_tile(int size, vector<vector<int>> &board) {
 // Game finishes when the board is full && there are no possible combinations left on the board
 // If game not finished, returns false. Else returns true.
 
-bool check_finish(int size, vector<vector<int>> &board) {
+bool check_finish(int size, vector<vector<int>> board) {
 
     // Check if board is full by checking if any tile is 0.
     for (int i = 0; i < size; i++) {

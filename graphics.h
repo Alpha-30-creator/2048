@@ -5,6 +5,7 @@
 #include <string>
 
 void print_title();
+void print_red_divider();
 void print_instructions();
 void display_loading();
 void display_board(std::vector<std::vector<int>>& board);

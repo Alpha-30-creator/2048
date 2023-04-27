@@ -7,6 +7,15 @@
 
 using namespace std;
 
+// Utility function for printing a specific character a specific number of times
+string get_chars_util(char ch, int number_of_chars) {
+    string str = "";
+    for (int i = 0; i < number_of_chars; i++) {
+        str += ch;
+    }
+    return str;
+}
+
 // Function to print the title of the game when the game is run.
 void print_title() {
     string title_card_2048 = R"(
@@ -25,13 +34,10 @@ void print_title() {
     cout << "\n\n\n";
 }
 
-// Utility function for printing a specific character a specific number of times
-string get_chars_util(char ch, int number_of_chars) {
-    string str = "";
-    for (int i = 0; i < number_of_chars; i++) {
-        str += ch;
-    }
-    return str;
+void print_red_divider() {
+    cout << bold_on;
+    cout << red << get_chars_util('-', 80) << def << '\n';
+    cout << bold_off;
 }
 
 // Function to print game instructions
@@ -86,7 +92,7 @@ void print_menu(string username) {
     s = "3. Instructions";
     cout << get_chars_util(' ', 40 - s.length() / 2) << s << "\n\n";
     cout << def;
-    cout << red << get_chars_util('-', 80) << def << "\n\n";
+    print_red_divider();
     cout << bold_off;
 }
 

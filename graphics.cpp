@@ -45,7 +45,7 @@ void print_instructions() {
     cout << "However, in this version, the player must keep combining tiles until it is no\nlonger possible.";
     cout << "The goal is to accumulate the highest score possible!\n";
     cout << "In order to combine the tiles the player can shift the tiles on the board\n up, left, down or right.\n";
-    cout << " This is represented by the w, a, s and d keys on the keyboard.\n"
+    cout << " This is represented by the w, a, s and d keys on the keyboard.\n";
     cout << "The tiles can contain only integer values starting from 2, and that are\na power of two, like 2, 4, 8, 16, 32, and so on.\n";
     cout << "If the board is full, and there is no possible move to make like merging\ntiles together - the game is over.\n\n";
     cout << red << get_chars_util('-', 80) << def;

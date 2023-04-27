@@ -151,7 +151,7 @@ void generate_random_tile(int size, vector<vector<int>> &board) {
 
 // (check_finish) := Function to check if the game has finished.
 // Game finishes when the board is full && there are no possible combinations left on the board
-// If game finished, returns true. Else returns false.
+// If game not finished, returns false. Else returns true.
 
 bool check_finish(int size, vector<vector<int>> &board) {
 
@@ -184,7 +184,7 @@ bool check_finish(int size, vector<vector<int>> &board) {
     //          if current_sum != target_sum (it means the non-zero tile is not the same as the previous non-zero tile found),
     //              target_sum is now changed to twice the new non-zero tile and current sum is the new non-zero tile
     // Loop
-    // return false if no combination found
+    // return true if no combination found
 
 
     // Checking horizontally (logic described above)

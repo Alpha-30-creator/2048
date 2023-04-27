@@ -197,7 +197,7 @@ bool check_finish(int size, vector<vector<int>> &board) {
                 current_sum = board[i][j];         
             } 
             else {
-                current_sum += board[i][j]
+                current_sum += board[i][j];
                 if (current_sum == target_sum) {
                     return false; // combination is present
                 } 

@@ -41,11 +41,13 @@ void print_instructions() {
     cout << bold_on;
     cout << red << get_chars_util('-', 40 - s.length() / 2) << green << s << red << get_chars_util('-', 40 - s.length() / 2) << def << "\n\n";
     cout << green;
-    cout << "Conventionally, in this game, the player must combine tiles containing the same numbers until they reach the number 2048.\n";
-    cout << "However, in this version, the player must keep combining tiles until it is no longer possible. The goal is to accumulate the highest score possible!\n";
-    cout << "In order to combine the tiles the player can shift the tiles on the board up, left, down or right which is represented by the w, a, s and d keys on the keyboard.\n";
-    cout << "The tiles can contain only integer values starting from 2, and that are a power of two, like 2, 4, 8, 16, 32, and so on.\n";
-    cout << "If the board is full, and there is no possible move to make like merging tiles together - the game is over.\n\n";
+    cout << "Conventionally, in this game, the player must combine tiles containing the same\nnumbers until they reach the number 2048.\n";
+    cout << "However, in this version, the player must keep combining tiles until it is no\nlonger possible.";
+    cout << "The goal is to accumulate the highest score possible!\n";
+    cout << "In order to combine the tiles the player can shift the tiles on the board\n up, left, down or right.\n";
+    cout << " This is represented by the w, a, s and d keys on the keyboard.\n"
+    cout << "The tiles can contain only integer values starting from 2, and that are\na power of two, like 2, 4, 8, 16, 32, and so on.\n";
+    cout << "If the board is full, and there is no possible move to make like merging\ntiles together - the game is over.\n\n";
     cout << red << get_chars_util('-', 80) << def;
     cout << bold_off;
 }

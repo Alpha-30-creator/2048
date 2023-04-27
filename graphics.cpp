@@ -33,7 +33,32 @@ string get_chars_util(char ch, int number_of_chars) {
     return str;
 }
 
-// Function to print menu for the player when game is started
+// Function to print game instructions
+void print_instructions() {
+    cout << "Instructions: \n";
+    cout << "Use the arrow keys to move the tiles. When two tiles with the same number touch, they merge into one!\n";
+    cout << "In this game, the player must combine tiles containing the same numbers until they reach the number 2048.\n";
+    cout << "The tiles can contain only integer values starting from 2, and that are a power of two, like 2, 4, 8, 16, 32, and so on.\n";
+    cout << "Ideally, the player should reach the 2048 tile within the smallest number of steps.\n";
+    cout << "The board has dimension of 4 x 4 tiles, so that it can fit up to 16 tiles.\n";
+    cout << "If the board is full, and there is no possible move to make like merging tiles together - the game is over.\n\n";
+}
+// Function to display loading message
+void display_loading() {
+    cout << "Loading game...\n\n";
+// Function to display the current state of the board
+void display_board(vector<vector<int>>& board) {
+    int size = board.size();
+    cout << "Current Board:\n\n";
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            cout << setw(5) << board[i][j];
+        }
+        cout << '\n';
+    }
+    cout << '\n';
+}
+}
 // This function also uses the color codes defined in color.h header file and uses the utility function get_chars_util to print character
 void print_menu(string username) {
     int width = 80;

@@ -189,25 +189,22 @@ bool check_finish(int size, vector<vector<int>> &board) {
 
     // Checking horizontally (logic described above)
     for (int i = 0; i < size; i++) {
-        
         int target_sum = 0;
         int current_sum = 0;
-        
         for (int j = 0; j < size; j++) {
             if (target_sum == 0) {
-            
                 target_sum = board[i][j] * 2;
-                current_sum = board[i][j];
-            
-            } else {
-            
-                current_sum += board[i][j];
-            
+                current_sum = board[i][j];         
+            } 
+            else {
+                current_sum += board[i][j]
                 if (current_sum == target_sum) {
                     return false; // combination is present
-                } else if (board[i][j] == 0) {
+                } 
+                else if (board[i][j] == 0) {
                     continue;
-                } else {
+                } 
+                else {
                     target_sum = board[i][j] * 2;
                     current_sum = board[i][j];
                 }
@@ -217,31 +214,27 @@ bool check_finish(int size, vector<vector<int>> &board) {
 
     // Checking vertically (logic described above)
     for (int i = 0; i < size; i++) {
-
         int target_sum = 0;
-        int current_sum = 0;
-        
+        int current_sum = 0;       
         for (int j = 0; j < size; j++) {
             if (target_sum == 0) {
-                
                 target_sum = board[j][i] * 2;
                 current_sum = board[j][i];
-            
-            } else {
-                
+            }
+            else {
                 current_sum += board[j][i];
-                
                 if (current_sum == target_sum) {
                     return true; // combination is present
-                } else if (board[j][i] == 0) {
+                } 
+                else if (board[j][i] == 0) {
                     continue;
-                } else {
+                } 
+                else {
                     target_sum = board[j][i] * 2;
                     current_sum = board[j][i];
                 }
             }
         } 
     }
-
     return false;
 }

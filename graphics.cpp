@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <sstream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -65,7 +66,6 @@ void display_board(vector<vector<int>>& board) {
         cout << '\n';
     }
     cout << '\n';
-}
 }
 
 //Function to print main menu

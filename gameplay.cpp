@@ -225,7 +225,7 @@ bool check_finish(int size, vector<vector<int>> &board) {
                 current_sum += board[j][i];
                 
                 if (current_sum == target_sum) {
-                    return true; // combination is present
+                    return false; // combination is present
                 } else if (board[j][i] == 0) {
                     continue;
                 } else {
@@ -236,5 +236,5 @@ bool check_finish(int size, vector<vector<int>> &board) {
         } 
     }
 
-    return false;
+    return true;
 }

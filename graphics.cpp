@@ -84,6 +84,6 @@ void print_menu(string username) {
     s = "3. Instructions";
     cout << get_chars_util(' ', 40 - s.length() / 2) << s << "\n\n";
     cout << def;
-    cout << red << get_chars_util('-', 80) << def;
+    cout << red << get_chars_util('-', 80) << def << "\n\n";
     cout << bold_off;
 }

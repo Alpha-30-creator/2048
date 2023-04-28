@@ -39,7 +39,7 @@ void save_game(vector<vector<int>> board, int score, string username) {
 }
 
 //Function to load a saved game
-vector<vector<int>> loadGame(string username) {
+vector<vector<int>> loadGame(string username, int &score) {
     //create a 2D vector of int to store board
     vector<vector<int>> board;
     //open file loadgame.txt
@@ -63,6 +63,7 @@ vector<vector<int>> loadGame(string username) {
             if (user == username) {
                 //extract size of board
                 word >> size;
+                word >> score;
                 //extract board from file and store in 2D vector
                 for(int i= 0; i < size; i++) {
                     int num;

@@ -98,7 +98,5 @@ void print_menu(string username) {
 
 //function to clear the screen
 void clear_screen() {
-    for (int i = 0; i < 20; i++) {
-        cout << "\n";
-    }
+    system("clear");
 }

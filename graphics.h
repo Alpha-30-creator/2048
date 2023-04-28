@@ -10,5 +10,6 @@ void print_instructions();
 void display_loading();
 void display_board(std::vector<std::vector<int>>& board);
 void print_menu(std::string username);
-
+void clear_screen();
+  
 #endif

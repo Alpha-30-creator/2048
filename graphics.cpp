@@ -75,7 +75,15 @@ void display_board(vector<vector<int>>& board) {
     }
     cout << '\n';
 }
-
+// Function to display the leaderboard
+void display_leaderboard(int board[]) {
+    cout << "Leaderboard:\n\n";
+    int size = sizeof(board)/sizeof(board[0]);
+    for (int i = 0; i < size; i++) {
+        cout << "Player " << i+1 << ": " << board[i] << "\n";
+    }
+    cout << '\n';
+}
 //Function to print main menu
 // This function also uses the color codes defined in color.h header file and uses the utility function get_chars_util to print character
 void print_menu(string username) {

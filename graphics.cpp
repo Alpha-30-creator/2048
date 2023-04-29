@@ -61,6 +61,19 @@ void print_instructions() {
 // Function to display loading message
 void display_loading() {
     cout << "Loading game...\n\n";
+// Function to display the difficulty level
+void print_difficulty_menu() {
+    string s = "  Difficulty  ";
+    cout << bold_on;
+    cout << red << get_chars_util('-', 40 - s.length() / 2) << green << s << red << get_chars_util('-', 40 - s.length() / 2) << def << "\n\n";
+    cout << green;
+    cout << "Please select a difficulty level:\n\n";
+    cout << "1. Easy\n";
+    cout << "2. Medium\n";
+    cout << "3. Hard\n\n";
+    cout << red << get_chars_util('-', 80) << def;
+    cout << bold_off;
+}
 }
 
 // Function to display the current state of the board

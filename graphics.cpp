@@ -69,21 +69,52 @@ void print_difficulty_menu() {
     cout << red << get_chars_util('-', 40 - s.length() / 2) << green << s << red << get_chars_util('-', 40 - s.length() / 2) << def << "\n\n";
     cout << green;
     cout << "Please select a difficulty level:\n\n";
-    cout << "1. Easy\n";
-    cout << "2. Medium\n";
-    cout << "3. Hard\n\n";
+    cout << "1. Easy - 3x3 \n";
+    cout << "2. Medium - 4x4 \n";
+    cout << "3. Hard - 5x5 \n\n";
     cout << red << get_chars_util('-', 80) << def;
     cout << bold_off;
 }
-}
-
 // Function to display the current state of the board
 void display_board(vector<vector<int>>& board) {
     int size = board.size();
     cout << "Current Board:\n\n";
+
+    // Define ASCII escape codes for colored text
+    const string red = "\033[0;31m";
+    const string green = "\033[1;32m";
+    const string yellow = "\033[1;33m";
+    const string blue = "\033[1;34m";
+    const string magenta = "\033[1;35m";
+    const string cyan = "\033[1;36m";
+    const string reset = "\033[0m";
+
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
-            cout << setw(5) << board[i][j];
+            // Determine the color of the tile based on its value
+            string color;
+            switch (board[i][j]) {
+                case 2:
+                    color = green;
+                    break;
+                case 4:
+                    color = magenta;
+                    break;
+                case 8:
+                    color = yellow;
+                    break;
+                case 16:
+                    color = cyan;
+                    break;
+                case 32:
+                    color = blue;
+                    break;
+                default:
+                    color = red;
+                    break;
+            }
+            // Output the current tile with the appropriate color and padding
+            cout << setw(6) << left << color << board[i][j] << reset;
         }
         cout << '\n';
     }

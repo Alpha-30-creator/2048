@@ -60,6 +60,7 @@ void print_instructions() {
 
 // Function to display loading message
 void display_loading() {
+// Output a message to let the user know that the game is being loaded
     cout << "Loading game...\n\n";
 // Function to display the difficulty level
 void print_difficulty_menu() {
@@ -90,11 +91,16 @@ void display_board(vector<vector<int>>& board) {
 }
 // Function to display the leaderboard
 void display_leaderboard(int board[]) {
+    // Output a header for the leaderboard display
     cout << "Leaderboard:\n\n";
+    // Get the size of the leaderboard array
     int size = sizeof(board)/sizeof(board[0]);
+    // Loop through each player in the leaderboard
     for (int i = 0; i < size; i++) {
+        // Output the current player number and their score
         cout << "Player " << i+1 << ": " << board[i] << "\n";
     }
+    // Output an additional newline character after the leaderboard display for spacing
     cout << '\n';
 }
 //Function to print main menu

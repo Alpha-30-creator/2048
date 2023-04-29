@@ -3,7 +3,8 @@
 using namespace std;
 
 // a recursion function that supposed to be used only by the move function
-// mover_update is used to update one row or a column till the end
+// mover_update is used to update (move each square) one row or a column till the end
+// the function does not return any value. It makes changes to the 2D vector itself (the game board) 
 // board - a 2d vector that stores the game board
 // size - the dimension of the board (the board is square-shaped)
 // x, y - indices of the square that is being updated (x - row, y - column)
@@ -56,6 +57,7 @@ void mover_update(vector<vector<int>> &board, int size, int x, int y, int dx, in
 
 
 // function to move board
+// does not return any value, makes changes directly to the 2d vector (the game board)
 // board - 2d vector that stores the game board
 // size - the dimension of the board (the board is square-shaped)
 // dir - direction of the move (right, left, up, down) (not case-sensitive)

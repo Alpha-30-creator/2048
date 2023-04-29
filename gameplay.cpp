@@ -240,10 +240,6 @@ bool check_finish(int size, vector<vector<int>> board) {
 }
 
 
-#include "mover.h"
-
-using namespace std;
-
 // a recursion function that supposed to be used only by the move function
 // mover_update is used to update (move each square) one row or a column till the end
 // the function does not return any value. It makes changes to the 2D vector itself (the game board) 

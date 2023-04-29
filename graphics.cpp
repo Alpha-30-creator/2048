@@ -142,22 +142,23 @@ void print_difficulty_menu() {
 }
 
 // Function to display the leaderboard
-void display_leaderboard(int board[]) {
+void display_leaderboard(int scores[], int num_players) {
+    // Sort the scores array in descending order
+    sort(scores, scores + num_players, greater<int>());
+    
     // Output a header for the leaderboard display
-    cout << "Leaderboard:\n\n";
-    // Get the size of the leaderboard array
-    int size = sizeof(board)/sizeof(board[0]);
-    // Loop through each player in the leaderboard
-    for (int i = 0; i < size; i++) {
-        // Output the current player number and their score
-        cout << "Player " << i+1 << ": " << board[i] << "\n";
+    cout << "LEADERBOARD\n\n";
+    
+    // Loop through each player in the leaderboard and output their rank and score
+    for (int i = 0; i < num_players; i++) {
+        cout << "#" << i+1 << " - Score: " << scores[i] << '\n';
     }
+    
     // Output an additional newline character after the leaderboard display for spacing
     cout << '\n';
 }
 
-
-//function to clear the screen
+//Function to clear the screen
 void clear_screen() {
     system("clear");
 }

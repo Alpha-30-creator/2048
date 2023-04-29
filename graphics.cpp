@@ -77,7 +77,7 @@ void print_title() {
     cout << green << bold_on << title_card_2048 << bold_off << def; // Using color definitions from color.h header file
     cout << "\n\n\n";
 }
-
+// This function prints a bold red divider
 void print_red_divider() {
     cout << bold_on;
     cout << red << get_chars_util('-', 80) << def << '\n';
@@ -106,6 +106,25 @@ void print_instructions() {
 void display_loading() {
 // Output a message to let the user know that the game is being loaded
     cout << "Loading game...\n\n";
+}
+//Function to print main menu
+// This function also uses the color codes defined in color.h header file and uses the utility function get_chars_util to print character
+void print_menu(string username) {
+    string s = "  Menu  ";
+    cout << bold_on;
+    cout << red << get_chars_util('-', 40 - s.length() / 2) << green << s << red << get_chars_util('-', 40 - s.length() / 2) << def << "\n\n";
+    cout << green;
+    s = "Welcome, " + username;
+    cout << get_chars_util(' ', 40 - s.length() / 2) << s << "\n\n";
+    s = "1. New Game";
+    cout << get_chars_util(' ', 40 - s.length() / 2) << s << '\n';
+    s = "2. Load Game";
+    cout << get_chars_util(' ', 40 - s.length() / 2) << s << '\n';
+    s = "3. Instructions";
+    cout << get_chars_util(' ', 40 - s.length() / 2) << s << "\n\n";
+    cout << def;
+    print_red_divider();
+    cout << bold_off;
 }
 // Function to display the difficulty level
 
@@ -136,25 +155,7 @@ void display_leaderboard(int board[]) {
     // Output an additional newline character after the leaderboard display for spacing
     cout << '\n';
 }
-//Function to print main menu
-// This function also uses the color codes defined in color.h header file and uses the utility function get_chars_util to print character
-void print_menu(string username) {
-    string s = "  Menu  ";
-    cout << bold_on;
-    cout << red << get_chars_util('-', 40 - s.length() / 2) << green << s << red << get_chars_util('-', 40 - s.length() / 2) << def << "\n\n";
-    cout << green;
-    s = "Welcome, " + username;
-    cout << get_chars_util(' ', 40 - s.length() / 2) << s << "\n\n";
-    s = "1. New Game";
-    cout << get_chars_util(' ', 40 - s.length() / 2) << s << '\n';
-    s = "2. Load Game";
-    cout << get_chars_util(' ', 40 - s.length() / 2) << s << '\n';
-    s = "3. Instructions";
-    cout << get_chars_util(' ', 40 - s.length() / 2) << s << "\n\n";
-    cout << def;
-    print_red_divider();
-    cout << bold_off;
-}
+
 
 //function to clear the screen
 void clear_screen() {

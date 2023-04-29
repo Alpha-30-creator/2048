@@ -15,7 +15,51 @@ string get_chars_util(char ch, int number_of_chars) {
     }
     return str;
 }
+// Function to display the current state of the board
+void display_board(vector<vector<int>>& board) {
+    int size = board.size();
+    cout << "Current Board:\n\n";
 
+    // Define ASCII escape codes for colored text
+    const string red = "\033[0;31m";
+    const string green = "\033[1;32m";
+    const string yellow = "\033[1;33m";
+    const string blue = "\033[1;34m";
+    const string magenta = "\033[1;35m";
+    const string cyan = "\033[1;36m";
+    const string reset = "\033[0m";
+
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            // Determine the color of the tile based on its value
+            string color;
+            switch (board[i][j]) {
+                case 2:
+                    color = green;
+                    break;
+                case 4:
+                    color = magenta;
+                    break;
+                case 8:
+                    color = yellow;
+                    break;
+                case 16:
+                    color = cyan;
+                    break;
+                case 32:
+                    color = blue;
+                    break;
+                default:
+                    color = red;
+                    break;
+            }
+            // Output the current tile with the appropriate color and padding
+            cout << setw(6) << left << color << board[i][j] << reset;
+        }
+        cout << '\n';
+    }
+    cout << '\n';
+}
 // Function to print the title of the game when the game is run.
 void print_title() {
     string title_card_2048 = R"(
@@ -62,7 +106,9 @@ void print_instructions() {
 void display_loading() {
 // Output a message to let the user know that the game is being loaded
     cout << "Loading game...\n\n";
+}
 // Function to display the difficulty level
+
 void print_difficulty_menu() {
     string s = "  Difficulty  ";
     cout << bold_on;
@@ -75,51 +121,7 @@ void print_difficulty_menu() {
     cout << red << get_chars_util('-', 80) << def;
     cout << bold_off;
 }
-// Function to display the current state of the board
-void display_board(vector<vector<int>>& board) {
-    int size = board.size();
-    cout << "Current Board:\n\n";
 
-    // Define ASCII escape codes for colored text
-    const string red = "\033[0;31m";
-    const string green = "\033[1;32m";
-    const string yellow = "\033[1;33m";
-    const string blue = "\033[1;34m";
-    const string magenta = "\033[1;35m";
-    const string cyan = "\033[1;36m";
-    const string reset = "\033[0m";
-
-    for (int i = 0; i < size; i++) {
-        for (int j = 0; j < size; j++) {
-            // Determine the color of the tile based on its value
-            string color;
-            switch (board[i][j]) {
-                case 2:
-                    color = green;
-                    break;
-                case 4:
-                    color = magenta;
-                    break;
-                case 8:
-                    color = yellow;
-                    break;
-                case 16:
-                    color = cyan;
-                    break;
-                case 32:
-                    color = blue;
-                    break;
-                default:
-                    color = red;
-                    break;
-            }
-            // Output the current tile with the appropriate color and padding
-            cout << setw(6) << left << color << board[i][j] << reset;
-        }
-        cout << '\n';
-    }
-    cout << '\n';
-}
 // Function to display the leaderboard
 void display_leaderboard(int board[]) {
     // Output a header for the leaderboard display

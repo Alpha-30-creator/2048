@@ -105,7 +105,7 @@ void print_instructions() {
 // Function to display loading message
 void display_loading() {
 // Output a message to let the user know that the game is being loaded
-    cout << "Loading game...\n\n";
+    cout << "Loading 2048 game...\n\n";
 }
 //Function to print main menu
 // This function also uses the color codes defined in color.h header file and uses the utility function get_chars_util to print character

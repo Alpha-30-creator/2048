@@ -7,7 +7,7 @@
 using namespace std;
 
 // Function to initialize the board 
-void initializeBoard(int size, vector<vector<int>> &board) {
+void initialize_board(int size, vector<vector<int>> &board) {
     // Resize the board with the given size and initialize its elements with 0(empty positions)
     for(int i= 0; i < size; i++){
         vector<int> row;
@@ -37,7 +37,7 @@ void initializeBoard(int size, vector<vector<int>> &board) {
 }
 
 //Function to calculate the score of the board after a move
-void calculateScore(char move, int &score, int size, vector<vector<int>> &board) {
+void calculate_score(char move, int &score, int size, vector<vector<int>> &board) {
     int temp = 0;
     
     // For score calculation, four directions need to considered: up, down, left and right.

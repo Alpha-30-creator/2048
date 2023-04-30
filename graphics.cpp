@@ -17,9 +17,11 @@ string get_chars_util(char ch, int number_of_chars) {
     return str;
 }
 // Function to display the current state of the board
-void display_board(vector<vector<int>>& board) {
-    int size = board.size();
-    cout << "Current Board:\n\n";
+void displayBoard(const vector<vector<int>>& board) {
+    int rowSize = board.size();
+    int colSize = board[0].size();
+
+    cout << setfill('-') << setw(colSize * 5 + 1) << "" << setfill(' ') << endl;
 
     // Define ASCII escape codes for colored text
     const string red = "\033[0;31m";
@@ -30,8 +32,13 @@ void display_board(vector<vector<int>>& board) {
     const string cyan = "\033[1;36m";
     const string reset = "\033[0m";
 
-    for (int i = 0; i < size; i++) {
-        for (int j = 0; j < size; j++) {
+    for (int i = 0; i < rowSize; ++i) {
+        cout << "|";
+        for (int j = 0; j < colSize; ++j) {
+            if (board[i][j] == 0) {
+                cout << setw(4) << "" << "|";
+            } else {
+                cout << setw(4)<< board[i][j] << "|" ;
             // Determine the color of the tile based on its value
             string color;
             switch (board[i][j]) {
@@ -53,13 +60,10 @@ void display_board(vector<vector<int>>& board) {
                 default:
                     color = red;
                     break;
-            }
-            // Output the current tile with the appropriate color and padding
-            cout << setw(6) << left << color << board[i][j] << reset;
+             }
         }
-        cout << '\n';
+        cout << endl << setfill('-') << setw(colSize * 5 + 1) << "" << setfill(' ') << endl;
     }
-    cout << '\n';
 }
 // Function to print the title of the game when the game is run.
 void print_title() {

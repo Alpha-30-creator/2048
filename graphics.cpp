@@ -135,9 +135,10 @@ void print_difficulty_menu() {
     cout << red << get_chars_util('-', 40 - s.length() / 2) << green << s << red << get_chars_util('-', 40 - s.length() / 2) << def << "\n\n";
     cout << green;
     cout << "Please select a difficulty level:\n\n";
-    cout << "1. Easy - 3x3 \n";
+    cout << "1. Easy - 5x5 \n";
     cout << "2. Medium - 4x4 \n";
-    cout << "3. Hard - 5x5 \n\n";
+    cout << "3. Hard - 3x3 \n";
+    cout << "4. Back to main menu \n\n";
     cout << red << get_chars_util('-', 80) << def;
     cout << bold_off;
 }

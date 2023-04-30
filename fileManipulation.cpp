@@ -39,7 +39,7 @@ void save_game(vector<vector<int>> board, int score, string username) {
 }
 
 //Function to load a saved game
-vector<vector<int>> loadGame(string username, int &score) {
+vector<vector<int>> load_game(string username, int &score) {
     //create a 2D vector of int to store board
     vector<vector<int>> board;
     //open file loadgame.txt
@@ -90,7 +90,7 @@ vector<vector<int>> loadGame(string username, int &score) {
 }
 
 //function for sorting the leaderboard file in terms of score
-bool sortscores(const string& a, const string& b) {
+bool sort_scores(const string& a, const string& b) {
     //finding scores in line and converting it to string
     int score_a = stoi(a.substr(a.find_last_of(" ") + 1));
     int score_b = stoi(b.substr(b.find_last_of(" ") + 1));
@@ -182,7 +182,7 @@ bool update_leaderboard(int score, string username) {
     }
 
     //sort the leaderboard vector array in terms of score
-    sort(leaderboard.begin(), leaderboard.end(), sortscores);
+    sort(leaderboard.begin(), leaderboard.end(), sort_scores());
     
     //update the leaderboard file with updated scores
     ofstream fout;

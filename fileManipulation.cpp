@@ -227,7 +227,7 @@ bool update_leaderboard(int score, string username) {
     }
 
     //sort the leaderboard vector array in terms of score
-    sort(leaderboard.begin(), leaderboard.end(), sort_scores());
+    sort(leaderboard.begin(), leaderboard.end(), sort_scores);
     
     //update the leaderboard file with updated scores
     ofstream fout;

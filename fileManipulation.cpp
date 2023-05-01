@@ -7,13 +7,65 @@
 using namespace std;
 
 //function to save a game in the file "leaderboard.txt"
-//takes the game board, score and username as paramters
-//saves all the information as <username(in lower space)><space><size><space><score><board values seperated by space>
+//takes the game board, score and username as parameters
+//first checks if the user already has a saved game
+//if it does, overwrites the existing saved game with the new board passed into the function
+//if does not have already saved game, appends it to the end of file
+//saves all the information as <username><space><size><space><score><board values seperated by space>
 
 void save_game(vector<vector<int>> board, int score, string username) {
+    ifstream fin;
+    //vector to store saved games of all users from loadgame.txt
+    vector<string> savedgames;
+    //counter variable to see which line already has save game in loadgame.txt of same user 
+    int i=0;
+    //boolean variable to check if user already has a saved game
+    bool founduser=false;
+    
+    fin.open("loadgame.txt");
+    //if file opens successfully, read all data
+    if(!fin.fail()){
+    string line;
+    while(getline(fin, line)){
+        savedgames.push_back(line);
+    }
+    //check is the user already has a saved game by looping through all 
+    for(i;i<savedgames.size();i++){
+        if(savedgames[i].substr(0,username.length())==username){
+            founduser=true;
+            break;
+        }
+    }
+    }
+    else{
+        //if file does not open, output error and exit
+        cout<<"Error in opening the file";
+        exit(1);
+    }
+    //if condition to check if user already has a saved game
+    if(founduser==true){
+        savedgames[i]=username+" "+to_string(board.size())+" "+to_string(score)+" ";
+        //modify the saved game by overwriting the existing saved game with the new saved game
+        for(int j=0;j<board.size();j++){
+            for(int k=0;k<board.size();k++){
+            savedgames[i
+            ]=savedgames[i]+to_string(board[j][k])+" ";    
+            }
+        }
+    }else{
+        //if user does not have a saved game yet, add new save game to the end of vector
+        savedgames.push_back(username+" "+to_string(board.size())+" "+to_string(score)+" ");
+        //add board values to the end of the new save game
+        for(int j=0;j<board.size();j++){
+            for(int k=0;k<board[j].size();k++){
+                savedgames.back()=savedgames.back()+to_string(board[j][k])+" ";    
+            }
+        }
+    }
+    
     ofstream fout;
-    //opening loadgame file in append mode
-    fout.open("loadgame.txt", ios::app);
+    //ocreating or overwriting loadgame.txt file, as the modified data is in vector 
+    fout.open("loadgame.txt");
     
     //if fail in opening file, output error and exit
     if (fout.fail()) {
@@ -21,18 +73,10 @@ void save_game(vector<vector<int>> board, int score, string username) {
          exit(1);
     }
     else {
-        //write the information in the specified format if file opens
-        
-        //first write user information
-        fout<<username<<" "<<board.size()<<" "<<score<<endl;
-        
-        //then write board state
-        for(int i=0;i<board.size();i++){
-            for(int j=0; j<board.size();j++){
-                fout<<board[i][j]<<" ";
-        }
-        }
-
+        //write the modified information in the specified format if file opens
+        for(int j=0;i<savedgames.size();i++){
+            fout<<savedgames[j]<<endl;
+            }
         fout.close();
         cout<<"Game saved successfully!"<<endl;
     }
@@ -134,6 +178,7 @@ vector<string> get_leaderboard(){
 //function for adding new scores in the leaderboard file and sorting it in terms of score
 //takes score and username as a parameter, saves it in the format <username><space><score>
 //sorts it using the sort function of STL
+
 bool update_leaderboard(int score, string username) {
     //read the current leaderboard from the file
     vector<string> leaderboard = get_leaderboard();
@@ -198,6 +243,5 @@ bool update_leaderboard(int score, string username) {
         }
     }
     fout.close();
-    
     return beat_high_score;
 }

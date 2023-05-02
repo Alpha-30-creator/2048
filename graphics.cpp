@@ -17,7 +17,7 @@ string get_chars_util(char ch, int number_of_chars) {
     return str;
 }
 // Function to display the current state of the board
-void display_board(const vector<vector<int>>& board) {
+void display_board(vector<vector<int>>& board) {
     int rowSize = board.size();
     int colSize = board[0].size();
     cout << bold_on;

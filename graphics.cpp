@@ -17,54 +17,27 @@ string get_chars_util(char ch, int number_of_chars) {
     return str;
 }
 // Function to display the current state of the board
-void displayBoard(const vector<vector<int>>& board) {
+void display_board(const vector<vector<int>>& board) {
     int rowSize = board.size();
     int colSize = board[0].size();
-
-    cout << setfill('-') << setw(colSize * 5 + 1) << "" << setfill(' ') << endl;
-
-    // Define ASCII escape codes for colored text
-    const string red = "\033[0;31m";
-    const string green = "\033[1;32m";
-    const string yellow = "\033[1;33m";
-    const string blue = "\033[1;34m";
-    const string magenta = "\033[1;35m";
-    const string cyan = "\033[1;36m";
-    const string reset = "\033[0m";
+    cout << bold_on;
+    cout << red << setfill('-') << setw(colSize * 5 + 1) << "" << setfill(' ') << def << endl;
 
     for (int i = 0; i < rowSize; ++i) {
-        cout << "|";
+        cout << red << "|" << def;
         for (int j = 0; j < colSize; ++j) {
+            //if value is 0 print empty cell as 0 represents empty cell
             if (board[i][j] == 0) {
-                cout << setw(4) << "" << "|";
+                cout << red << setw(4) << "" << "|" << def;
             } else {
-                cout << setw(4)<< board[i][j] << "|" ;
-            // Determine the color of the tile based on its value
-            string color;
-            switch (board[i][j]) {
-                case 2:
-                    color = green;
-                    break;
-                case 4:
-                    color = magenta;
-                    break;
-                case 8:
-                    color = yellow;
-                    break;
-                case 16:
-                    color = cyan;
-                    break;
-                case 32:
-                    color = blue;
-                    break;
-                default:
-                    color = red;
-                    break;
-             }
+                cout << green << setw(4) << board[i][j] << red << "|" <<;
+            }
         }
-        cout << endl << setfill('-') << setw(colSize * 5 + 1) << "" << setfill(' ') << endl;
+        cout << red << endl << setfill('-') << setw(colSize * 5 + 1) << "" << setfill(' ') << def << endl;
+        cout << bold_off;
     }
 }
+
 // Function to print the title of the game when the game is run.
 void print_title() {
     string title_card_2048 = R"(
@@ -148,20 +121,18 @@ void print_difficulty_menu() {
 }
 
 // Function to display the leaderboard
-void display_leaderboard(int scores[], int num_players) {
-    // Sort the scores array in descending order
-    sort(scores, scores + num_players, greater<int>());
-    
-    // Output a header for the leaderboard display
-    cout << "LEADERBOARD\n\n";
-    
-    // Loop through each player in the leaderboard and output their rank and score
-    for (int i = 0; i < num_players; i++) {
-        cout << "#" << i+1 << " - Score: " << scores[i] << '\n';
+void display_leaderboard(vector<string> leader_board) {
+    string s = " Leader Board ";
+    cout << bold_on;
+    cout << red << get_chars_util('-', 40 - s.length() / 2) << green << s << red << get_chars_util('-', 40 - s.length() / 2) << def << "\n\n";
+    cout << green;
+    //loop through vector and print all lines of leader board
+    for (int i = 1; i <= leader_board.size(); i++) {
+        cout << i << ". " << leader_board[i - 1] << endl;     
     }
-    
-    // Output an additional newline character after the leaderboard display for spacing
-    cout << '\n';
+    print_red_divider();
+    cout << bold_off;
+    cout << def;
 }
 
 //Function to clear the screen

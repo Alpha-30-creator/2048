@@ -1,13 +1,15 @@
+// gameplay.h
 #ifndef GAMEPLAY_H
 #define GAMEPLAY_H
 
-#include <vector>
 #include <string>
+#include <vector>
+using namespace std;
 
-void initializeBoard(int size, std::vector<std::vector<int>> &board);
-void calculateScore(char move, int &score, int size, std::vector<std::vector<int>> &board);
-void generate_random_tile(int size, std::vector<std::vector<int>> &board);
-bool check_finish(int size, std::vector<std::vector<int>> board);
-void move(std::vector<std::vector<int>> &board, int size, string dir);
+void initialize_board(int size, vector<vector<int>> &board);
+void calculate_score(char move, int &score, int size, svector<vector<int>> &board);
+void generate_random_tile(int size, vector<vector<int>> &board);
+bool check_finish(int size, vector<vector<int>> board);
+void move(vector<vector<int>> &board, int size, string dir);
 
 #endif

@@ -1,3 +1,4 @@
+#include "fileManipulation.h"
 #include <iostream>
 #include <string>
 #include <fstream>

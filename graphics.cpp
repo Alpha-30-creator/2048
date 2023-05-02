@@ -1,4 +1,5 @@
 #include "color.h"
+#include "graphics.h"
 #include <iostream>
 #include <iomanip>
 #include <sstream>

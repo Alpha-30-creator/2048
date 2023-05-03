@@ -2,8 +2,8 @@
 #ifndef FILEMANIPULATION_H
 #define FILEMANIPULATION_H
 
-#include <string>;
-#include <vector>;
+#include <string>
+#include <vector>
 using namespace std;
 
 void save_game(vector<vector<int>> board, int score, string username);

@@ -125,27 +125,25 @@ void calculate_score(char move, int &score, int size, vector<vector<int>> &board
 //      room for another tile
 void generate_random_tile(int size, vector<vector<int>> &board) {
     // Create an 2D containing pairs of coordinates (i, j) of currently empty tiles
-    vector<vector<int>> empty_tiles;
+    vector<pair<int, int>> empty_tiles;
     
-    // Find all empty tiles and store their coordinates (i, j) as 'pairs' in the empty_tiles array. Keep count of # of empty tiles. 
+    // Find all empty tiles and store their coordinates (i, j) as 'pairs' in the empty_tiles array. 
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
-	    vector<int> row;
             if (board[i][j] == 0) {
-                row.push_back(i,j);
+                empty_tiles.push_back(make_pair(i, j));
             }
-	    board.push_back(row);
         }
     }
     //find number of empty tiles
-    int empty = empty_tiles.size();
+    int num_of_empty_tiles = empty_tiles.size();
     // Seed the random number generator
     srand(time(0));
 
     // Select a random index number in the array, thereby selecting a random coordinate from the tiles.
-    int random_array_index = rand() % empty;
+    int random_array_index = rand() % num_of_empty_tiles;
     //assign random empty tile with value 2
-    board[empty_tiles[random_array_index][0]][empty_tiles[random_array_index][1]] = 2;
+    board[empty_tiles[random_array_index].first][empty_tiles[random_array_index].second] = 2;
 }
 
 

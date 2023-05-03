@@ -12,7 +12,7 @@ void print_title();
 void print_red_divider();
 void print_instructions();
 void display_loading();
-void display_board(svector<stdvector<int>>& board);
+void display_board(vector<vector<int>>& board);
 void print_menu(string username);
 void print_difficulty_menu();
 void display_leaderboard(vector<string> leader_board);

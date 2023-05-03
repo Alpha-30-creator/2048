@@ -17,6 +17,7 @@ string get_chars_util(char ch, int number_of_chars) {
     }
     return str;
 }
+
 // Function to display the current state of the board
 void display_board(vector<vector<int>>& board) {
     int rowSize = board.size();
@@ -31,7 +32,7 @@ void display_board(vector<vector<int>>& board) {
             if (board[i][j] == 0) {
                 cout << red << setw(4) << "" << "|" << def;
             } else {
-                cout << green << setw(4) << board[i][j] << red << "|" <<;
+                cout << green << setw(4) << board[i][j] << red << "|";
             }
         }
         cout << red << endl << setfill('-') << setw(colSize * 5 + 1) << "" << setfill(' ') << def << endl;
@@ -86,6 +87,7 @@ void display_loading() {
 // Output a message to let the user know that the game is being loaded
     cout << "Loading 2048 game...\n\n";
 }
+
 //Function to print main menu
 // This function also uses the color codes defined in color.h header file and uses the utility function get_chars_util to print character
 void print_menu(string username) {
@@ -105,6 +107,7 @@ void print_menu(string username) {
     print_red_divider();
     cout << bold_off;
 }
+
 // Function to display the difficulty level
 
 void print_difficulty_menu() {

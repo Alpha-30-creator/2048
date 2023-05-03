@@ -118,7 +118,8 @@ void calculate_score(char move, int &score, int size, vector<vector<int>> &board
 }
 
 // (generate_random_tile) := Function to generate a random 2-tile after every move is done.
-//                           Modifies the board (2D vector).
+// Inputs: (i) integer size of the board, (ii) 2D vector of the current board as "pass-by-reference".
+// Outputs: Nothing. It modifies the board within the function.
 // Note: A random tile is generated no matter what as long as the game is running (i.e. the game is not finished)
 //      because after every successful move, the total number of filled tiles must decrease by at least 1, making
 //      room for another tile
@@ -151,8 +152,10 @@ void generate_random_tile(int size, vector<vector<int>> &board) {
 
 
 // (check_finish) := Function to check if the game has finished.
-// Game finishes when the board is full && there are no possible combinations left on the board
-// If game not finished, returns false. Else returns true.
+// Inputs: (i) integer size of the board, (ii) 2D vector for the current state of board.
+// Outputs: A boolean value indicating if the game is finished or not. 
+// Note: Game finishes when the board is full && there are no possible combinations left on the board
+//      If game not finished, returns false. Else returns true.
 
 bool check_finish(int size, vector<vector<int>> board) {
 
@@ -164,28 +167,17 @@ bool check_finish(int size, vector<vector<int>> board) {
             }
         }
     }
-    // if reached here, board is full, need to check for combinations now (described below)
+    // If reached here, board is full, need to check for combinations now (described below)
 
-    // For combinations, vertical and horizontal checks need to be made.
-    // Note: Left-to-right or right-to-left (likewise for vertical) does not matter.
-    
     // *Explanation of logic*
-    // Going from left-to-right (similar approach for top-to-down):
-    // Variable 'target_sum' contains the sum that needs to be created if combination is present.
-    // Variable 'current_sum' contains the current sum.
-    // Loop through each row and iterate through each tile in each row.
-    //      target_sum is 0 only until a non-zero tile is found in the row.
-    //      when non-zero tile is found, target_sum = twice the value of the tile (needed for combination) and current_sum = value of tile
-    //      if zero tile found, 
-    //          continue in the loop, maintaining target_sum and current_sum
-    //      if non-zero tile found again,
-    //          add it to current_sum
-    //          if current_sum == target_sum,
-    //              combination is found
-    //          if current_sum != target_sum (it means the non-zero tile is not the same as the previous non-zero tile found),
-    //              target_sum is now changed to twice the new non-zero tile and current sum is the new non-zero tile
-    // Loop
-    // return true if no combination found
+    // For combinations, vertical and horizontal checks need to be made.
+    // The code is checking if the game is finished or not by looking for any valid combinations of adjacent cells that add up to
+    // twice the value of a single cell. If such combinations exist, the game is not finished yet, and the function should return
+    // true. If no such combinations exist, the game is finished, and the function should return false.
+
+    // It iterates through the board twice, once horizontally and once vertically, using a sliding window approach to check for
+    // valid combinations of adjacent cells. The sliding window approach is efficient because it avoids the need to iterate through
+    // all possible combinations of cells, and it allows the code to quickly identify valid combinations.
 
 
     // Checking horizontally (logic described above)

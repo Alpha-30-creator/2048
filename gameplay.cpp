@@ -142,8 +142,9 @@ void generate_random_tile(int size, vector<vector<int>> &board) {
 
     // Select a random index number in the array, thereby selecting a random coordinate from the tiles.
     int random_array_index = rand() % num_of_empty_tiles;
+    pair<int, int> random_pair = *(empty_tiles.begin() + random_array_index);
     //assign random empty tile with value 2
-    board[empty_tiles[random_array_index].first][empty_tiles[random_array_index].second] = 2;
+    board[random_pair.first][random_pair.second] = 2;
 }
 
 

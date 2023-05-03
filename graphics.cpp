@@ -71,20 +71,41 @@ void print_instructions() {
     cout << bold_on;
     cout << red << get_chars_util('-', 40 - s.length() / 2) << green << s << red << get_chars_util('-', 40 - s.length() / 2) << def << "\n\n";
     cout << green;
-    cout << "Conventionally, in this game, the player must combine tiles containing the same\nnumbers until they reach the number 2048.\n";
-    cout << "However, in this version, the player must keep combining tiles until it is no\nlonger possible.";
-    cout << "The goal is to accumulate the highest score possible!\n";
-    cout << "In order to combine the tiles the player can shift the tiles on the board\n up, left, down or right.\n";
-    cout << " This is represented by the w, a, s and d keys on the keyboard.\n";
-    cout << "The tiles can contain only integer values starting from 2, and that are\na power of two, like 2, 4, 8, 16, 32, and so on.\n";
-    cout << "If the board is full, and there is no possible move to make like merging\ntiles together - the game is over.\n\n";
-    cout << red << get_chars_util('-', 80) << def;
+    s = get_chars_util(' ', 10) + "* GOAL: Accumulate the highest score possible by combining tiles of the same value. The sky is the limit! In order to combine the tiles, the player can shift the tiles on the board UP, LEFT, DOWN or RIGHT.\n\n" + get_chars_util(' ', 10) + "* CONTROLS: Use the W, A, S, and D keys on the keyboard to move the tiles. The tiles can contain only integer values starting from 2, and that are a power of two, like 2, 4, 8, 16, 32, and so on.\n\n" + get_chars_util(' ', 10) + "* ENDING: If the board is full, and there is no possible move to merge like tiles together - the game is over.\n\n" + get_chars_util(' ', 10) + "* SAVE/QUIT: Save the game at any time by pressing the ___ key. Or quit the game without saving by pressing the ____ key.\n\n" + get_chars_util(' ', 10) + "* LOAD GAME: Load your last saved game by choosing the option from the Main Menu.\n\n";
+
+    const int line_length = 60;
+    int count = 0;
+    string word;
+    for (char c : s) {
+        if (c == ' ' || c == '\n') {
+            if (count + word.size() + 1 > line_length) {
+                cout << '\n';
+                cout << get_chars_util(' ', 10);
+                count = 0;
+            }
+            cout << word << c;
+            if (c == '\n') {
+                count = 0;
+            } else {
+                count += word.size() + 1;
+            }
+            word.clear();
+        } else {
+            word += c;
+        }
+    }
+    if (count + word.size() > line_length) {
+        cout << '\n';
+    }
+    cout << word;
+
+    print_red_divider();
     cout << bold_off;
 }
 
-// Function to display loading message
+// Function to display loading s
 void display_loading() {
-// Output a message to let the user know that the game is being loaded
+// Output a s to let the user know that the game is being loaded
     cout << "Loading 2048 game...\n\n";
 }
 

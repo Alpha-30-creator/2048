@@ -208,8 +208,7 @@ bool check_finish(int size, vector<vector<int>> board) {
             if (target_sum == 0) {
                 target_sum = board[j][i] * 2;
                 current_sum = board[j][i];
-            }
-            else {
+            } else {
                 current_sum += board[j][i];
                 if (current_sum == target_sum) {
                     return false; // combination is present

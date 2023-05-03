@@ -22,7 +22,7 @@ string get_chars_util(char ch, int number_of_chars) {
 void display_board(vector<vector<int>>& board) {
     int rowSize = board.size();
     int colSize = board[0].size();
-    cout << bold_on;
+    cout << "\n\n" << bold_on;
     // upper border of table
     cout << get_chars_util(' ', 20) << red << setfill('-') << setw(colSize * 10 + 1) << "" << setfill(' ') << def << endl;
 
@@ -155,12 +155,17 @@ void print_difficulty_menu() {
     cout << bold_on;
     cout << red << get_chars_util('-', 40 - s.length() / 2) << green << s << red << get_chars_util('-', 40 - s.length() / 2) << def << "\n\n";
     cout << green;
-    cout << "Please select a difficulty level:\n\n";
-    cout << "1. Easy - 5x5 \n";
-    cout << "2. Medium - 4x4 \n";
-    cout << "3. Hard - 3x3 \n";
-    cout << "4. Back to main menu \n\n";
-    cout << red << get_chars_util('-', 80) << def;
+    s = "Please select a difficulty level:";
+    cout << get_chars_util(' ', 40 - s.length() / 2) << s << "\n\n";
+    s = "1. Easy - 5x5";
+    cout << get_chars_util(' ', 40 - s.length() / 2) << s << '\n';
+    s = "2. Medium - 4x4";
+    cout << get_chars_util(' ', 40 - s.length() / 2) << s << '\n';
+    s = "3. Hard - 3x3";
+    cout << get_chars_util(' ', 40 - s.length() / 2) << s << '\n';
+    s = "4. Back to Main Menu";
+    cout << get_chars_util(' ', 40 - s.length() / 2) << s << "\n\n";
+    print_red_divider();
     cout << bold_off;
 }
 

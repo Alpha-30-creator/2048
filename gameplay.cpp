@@ -121,13 +121,13 @@ void calculate_score(char move, int &score, int size, vector<vector<int>> &board
 // Inputs: (i) integer size of the board, (ii) 2D vector of the current board as "pass-by-reference".
 // Outputs: Nothing. It modifies the board within the function.
 // Note: A random tile is generated no matter what as long as the game is running (i.e. the game is not finished)
-//      because after every successful move, the total number of filled tiles must decrease by at least 1, making
-//      room for another tile
+//      because after every successful move, the total number of filled tiles must decrease by at least.
+
 void generate_random_tile(int size, vector<vector<int>> &board) {
-    // Create an 2D containing pairs of coordinates (i, j) of currently empty tiles
+    // Create a vector containing pairs of coordinates (i, j) of currently empty tiles
     vector<pair<int, int>> empty_tiles;
     
-    // Find all empty tiles and store their coordinates (i, j) as 'pairs' in the empty_tiles array. 
+    // Find all empty tiles and store their coordinates (i, j) as 'pairs' in the empty_tiles vector. 
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             if (board[i][j] == 0) {
@@ -135,12 +135,12 @@ void generate_random_tile(int size, vector<vector<int>> &board) {
             }
         }
     }
-    //find number of empty tiles
+    // Find number of empty tiles
     int num_of_empty_tiles = empty_tiles.size();
     // Seed the random number generator
     srand(time(0));
 
-    // Select a random index number in the array, thereby selecting a random coordinate from the tiles.
+    // Select a random index number in the vector, thereby selecting a random coordinate from the tiles.
     int random_array_index = rand() % num_of_empty_tiles;
     pair<int, int> random_pair = *(empty_tiles.begin() + random_array_index);
     //assign random empty tile with value 2
@@ -150,9 +150,8 @@ void generate_random_tile(int size, vector<vector<int>> &board) {
 
 // (check_finish) := Function to check if the game has finished.
 // Inputs: (i) integer size of the board, (ii) 2D vector for the current state of board.
-// Outputs: A boolean value indicating if the game is finished or not. 
+// Outputs: A boolean value indicating if the game is finished or not. If finished, return true. If not, return false. 
 // Note: Game finishes when the board is full && there are no possible combinations left on the board
-//      If game not finished, returns false. Else returns true.
 
 bool check_finish(int size, vector<vector<int>> board) {
 
@@ -164,11 +163,10 @@ bool check_finish(int size, vector<vector<int>> board) {
             }
         }
     }
-    // If reached here, board is full, need to check for combinations now (described below)
 
+    // Now  check for combinations (logic described below)
     // *Explanation of logic*
-    // For combinations, vertical and horizontal checks need to be made.
-    // The code is checking if the game is finished or not by looking for any valid combinations of adjacent cells that add up to
+    // The code checks if the game is finished or not by looking for any valid combinations of adjacent cells that add up to
     // twice the value of a single cell. If such combinations exist, the game is not finished yet, and the function should return
     // true. If no such combinations exist, the game is finished, and the function should return false.
 

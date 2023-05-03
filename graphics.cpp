@@ -23,21 +23,40 @@ void display_board(vector<vector<int>>& board) {
     int rowSize = board.size();
     int colSize = board[0].size();
     cout << bold_on;
-    cout << red << setfill('-') << setw(colSize * 5 + 1) << "" << setfill(' ') << def << endl;
+    // upper border of table
+    cout << get_chars_util(' ', 20) << red << setfill('-') << setw(colSize * 10 + 1) << "" << setfill(' ') << def << endl;
 
     for (int i = 0; i < rowSize; ++i) {
+
+        // empty row above tile value
+        cout << get_chars_util(' ', 20) << red << "|" << def;
+        for (int j = 0; j < colSize; ++j) {
+            cout << red << setw(5) << "" << setw(4) << "" << "|" << def;
+        }
+        cout << endl;
+
+        // row containing tile value
+        cout << get_chars_util(' ', 20);
         cout << red << "|" << def;
         for (int j = 0; j < colSize; ++j) {
             //if value is 0 print empty cell as 0 represents empty cell
             if (board[i][j] == 0) {
-                cout << red << setw(4) << "" << "|" << def;
+                cout << red << setw(5) << "" << setw(4) << "" << "|" << def;
             } else {
-                cout << green << setw(4) << board[i][j] << red << "|";
+                cout << green << setw(5) << board[i][j] << setw(4) << "" << red << "|";
             }
         }
-        cout << red << endl << setfill('-') << setw(colSize * 5 + 1) << "" << setfill(' ') << def << endl;
-        cout << bold_off;
+
+        // empty row below the tile value 
+        cout << endl << get_chars_util(' ', 20) << red << "|" << def;
+        for (int j = 0; j < colSize; ++j) {
+            cout << red << setw(5) << "" << setw(4) << "" << "|" << def;
+        }
+
+        // lower border of row
+        cout << red << endl << get_chars_util(' ', 20) <<  setfill('-') << setw(colSize * 10 + 1) << "" << setfill(' ') << def << endl;
     }
+    cout << bold_off;
 }
 
 // Function to print the title of the game when the game is run.

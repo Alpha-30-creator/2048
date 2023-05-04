@@ -6,6 +6,26 @@
 #include <iostream>
 #include <cstdlib> 
 
+#ifdef _WIN32
+#include <conio.h>
+#define GET_CHAR() _getch()
+#else
+#include <termios.h>
+#include <unistd.h>
+#define GET_CHAR() ({ \
+    char __c; \
+    struct termios __old, __new; \
+    tcgetattr(STDIN_FILENO, &__old); \
+    __new = __old; \
+    __new.c_lflag &= ~(ICANON | ECHO); \
+    tcsetattr(STDIN_FILENO, TCSANOW, &__new); \
+    __c = getchar(); \
+    tcsetattr(STDIN_FILENO, TCSANOW, &__old); \
+    if (__c == '\n') __c = '\r'; /* Return '\r' instead of '\n' */ \
+    __c; \
+})
+#endif
+
 using namespace std;
 
 vector<vector<int>> board;
@@ -13,11 +33,14 @@ int size, score = 0;
 string username;
 
 
-//pauses the program
+// Pauses the program, press enter to continue
 void pause() {
-	string s;
-	cout << "Type anything to continue...";
-	cin >> s;
+	cout << "\n\nPress enter to continue...";
+	char s = GET_CHAR();
+	while (s != '\r') {
+		s = GET_CHAR();
+	}
+	cout << '\n';
 }
 
 // asks the user for the integer input
@@ -26,6 +49,20 @@ void pause() {
 // max_val - maximum value for the input
 // Error 1 - means input is out of boundaries
 // Error 2 - input is not integer
+
+
+// This function takes input without waiting for the user to press Enter.
+
+char instant_input_move() {
+	cout << "SWIPE TO MAKE MOVE... (W/A/S/D)" << '\n';
+	char c = tolower(GET_CHAR());
+	while (c != 'w' && c != 'a' && c != 's' && c != 'd') {
+		c = tolower(GET_CHAR());
+	}
+	return c;
+
+}
+
 int input(string message, int min_val, int max_val) {
 	cout << message << '\n';
 	
@@ -103,7 +140,7 @@ int main() {
 	for (int i = 1; i <= 3; i++) cout << '\n';
 
 	cout << "Type your username:\n";
-	cin >> username;
+	getline(cin, username);
 	clear_screen();
 
 
@@ -113,12 +150,11 @@ int main() {
 		clear_screen();
 		display_board(board);
 
-		print_red_divider();
 		print_score(score);
 		print_red_divider();
 
 		if (check_finish(size, board)) {
-			cout << "Game Over\n";
+			print_game_over();
 
 			pause();
 			clear_screen();
@@ -143,12 +179,10 @@ int main() {
 		}
 
 		char dir;
-		cout << "Your move: ";
-		cin >> dir;
+		dir = instant_input_move();
 
 		calculate_score(dir, score, size, board);
 		move(board, size, dir);
-
 		generate_random_tile(size, board);
 	}
 

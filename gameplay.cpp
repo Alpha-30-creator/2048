@@ -137,14 +137,16 @@ void generate_random_tile(int size, vector<vector<int>> &board) {
     }
     // Find number of empty tiles
     int num_of_empty_tiles = empty_tiles.size();
-    // Seed the random number generator
-    srand(time(0));
+    if (num_of_empty_tiles > 0) {
+        // Seed the random number generator
+        srand(time(0));
 
-    // Select a random index number in the vector, thereby selecting a random coordinate from the tiles.
-    int random_array_index = rand() % num_of_empty_tiles;
-    pair<int, int> random_pair = *(empty_tiles.begin() + random_array_index);
-    //assign random empty tile with value 2
-    board[random_pair.first][random_pair.second] = 2;
+        // Select a random index number in the vector, thereby selecting a random coordinate from the tiles.
+        int random_array_index = rand() % num_of_empty_tiles;
+        pair<int, int> random_pair = *(empty_tiles.begin() + random_array_index);
+        //assign random empty tile with value 2
+        board[random_pair.first][random_pair.second] = 2;
+    }
 }
 
 
@@ -229,13 +231,13 @@ bool check_finish(int size, vector<vector<int>> board) {
 
 void move(vector<vector<int>> &board, int size, char dir) {
 
-	if (dir == 'l' || dir == 'r') {
+	if (dir == 'a' || dir == 'd') {
 		
 		
 		for (int i = 0; i < size; i++) {
 			vector<int> new_row;
 
-			if (dir == 'l') {
+			if (dir == 'a') {
 				for (int j = 0; j < size; j++) {
 					if (board[i][j] == 0) continue;
 
@@ -244,7 +246,7 @@ void move(vector<vector<int>> &board, int size, char dir) {
 				}
 			}
 
-			if (dir == 'r') {
+			if (dir == 'd') {
 				for (int j = size - 1; j >= 0; j--) {
 
 					if (board[i][j] == 0) continue;
@@ -256,7 +258,7 @@ void move(vector<vector<int>> &board, int size, char dir) {
 			}
 			
 			new_row.resize(size, 0);
-            if (dir == 'r') reverse(new_row.begin(), new_row.end());
+            if (dir == 'd') reverse(new_row.begin(), new_row.end());
 
 			board[i] = new_row;
 		}
@@ -264,12 +266,12 @@ void move(vector<vector<int>> &board, int size, char dir) {
 
 	}
 
-	if (dir == 'u' || dir == 'd') {
+	if (dir == 'w' || dir == 's') {
 		
 		for (int j = 0; j < size; j++) {
 			vector<int> new_col;
 
-			if (dir == 'u') {
+			if (dir == 'w') {
 				for (int i = 0; i < size; i++) {
 					if (board[i][j] == 0) continue;
 
@@ -279,7 +281,7 @@ void move(vector<vector<int>> &board, int size, char dir) {
 				}
 			}
 
-			if (dir == 'd') {
+			if (dir == 's') {
 				for (int i = size - 1; i >= 0; i--) {
 					if (board[i][j] == 0) continue;
 
@@ -290,7 +292,7 @@ void move(vector<vector<int>> &board, int size, char dir) {
 			}
 		
 			new_col.resize(size, 0);
-			if (dir == 'd') reverse(new_col.begin(), new_col.end());
+			if (dir == 's') reverse(new_col.begin(), new_col.end());
 
 			for (int i = 0; i < size; i++) {
 				board[i][j] = new_col[i];

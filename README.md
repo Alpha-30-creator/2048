@@ -32,7 +32,7 @@ After completing a game, the player's score is added to a leaderboard. The leade
 ## Running the Game
 
 We hope you enjoy playing this text-based version of 2048!
-## --------------------------------------------------------------------------------------------------------------------------------------------------------
+## --------------------------------------------------------------------------------------------------------
 
 ## Initializing the Board
 The initialize_board function sets up the game board with a given size and populates it with two random tiles of numeric value 2. It does so by using a nested for loop and a random number generator to place the tiles randomly on the board.

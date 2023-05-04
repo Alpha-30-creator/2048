@@ -179,23 +179,25 @@ int main() {
 		char dir;
 		dir = instant_input_move();
 
+		// If want to quit the game
 		if (dir == 'q') {
 			int choice = input("You pressed Q. Do you want to save and quit the game? [1 - Yes // 2 - No]: ", 1, 2);
+			// Confirm quit
 			if (choice == 1) {
 				save_game(board, score, username);
 				board.clear(); score = 0;
 				pause();
 				menu();
-			} else if (choice == 2) {
+			} else if (choice == 2) { // Do not quit
 				cout << green << bold_on << '\n' << "Please resume your play!" << bold_off << def << '\n';
 				dir = instant_input_move();
 			}
-		} else if (dir == 'r') {
-			int choice = input("You pressed R. Do you want to reset the game? [1 - Yes // 2 - No]: ", 1, 2);
-			if (choice == 1) {
+		} else if (dir == 'r') { // If want to reset the board
+			int choice = input("You pressed R. Do you want to reset the board? [1 - Yes // 2 - No]: ", 1, 2);
+			if (choice == 1) { // Confirm reset
 				board.clear(); score = 0; initialize_board(size, board);
 				clear_screen();
-			} else if (choice == 2) {
+			} else if (choice == 2) { // do not reset
 				cout << green << bold_on << '\n' << "Please resume your play!" << bold_off << def << '\n';
 				dir = instant_input_move();
 			}

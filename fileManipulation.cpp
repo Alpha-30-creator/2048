@@ -23,7 +23,8 @@ void save_game(vector<vector<int>> board, int score, string username) {
     int i = 0;
     //boolean variable to check if user already has a saved game
     bool user_found = false;
-    
+    //convert username to lowercase
+    transform(username.begin(), username.end(), username.begin(), ::tolower);
     fin.open("loadgame.txt");
     //if file opens successfully, read all data
     if(!fin.fail()){
@@ -45,7 +46,6 @@ void save_game(vector<vector<int>> board, int score, string username) {
         ofstream fout;
         fout.open("loadgame.txt");
         //covert username to lowercase
-        transform(username.begin(), username.end(), username.begin(), ::tolower);
         string saved_game = username + " " + to_string(board.size()) + " " + to_string(score) + " ";
         for(int j = 0;j < board.size(); j++){
             for(int k = 0;k < board.size(); k++){

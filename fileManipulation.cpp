@@ -126,7 +126,7 @@ vector<vector<int>> load_game(string username, int &score) {
             //remove extra spaces from username
             user.erase(remove(user.begin(), user.end(), ' '), user.end());
             //if username matches, extract board
-            sstringstream word(line);
+            stringstream word(line);
             string dummy;
             //so that word starts from the size of board
             for (int i = 0; i < spaces; i++) {

@@ -119,6 +119,8 @@ vector<vector<int>> load_game(string username, int &score) {
         //read file line by line
         string line;
         while (getline(fin, line)) {
+            //set user to empty string
+            user = "";
             //extract username from line
             int index = 0, spaces = 0;
             while(isdigit(line[index]) == false) {

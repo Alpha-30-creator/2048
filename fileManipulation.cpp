@@ -152,6 +152,8 @@ vector<string> get_leaderboard(){
 
     //check if file exists
     if (fin.fail()) {
+        //close file so we can open in write mode
+        fin.close()
         //if does not exist, create the file
         ofstream fout;
         fout.open("leaderboard.txt");

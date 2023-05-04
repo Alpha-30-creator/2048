@@ -47,7 +47,7 @@ void pause() {
 char instant_input_move() {
 	cout << green << bold_on << "\nSWIPE TO MAKE MOVE... (W/A/S/D)" << bold_off << def << '\n';
 	char c = tolower(GET_CHAR());
-	while (c != 'w' && c != 'a' && c != 's' && c != 'd') {
+	while (c != 'w' && c != 'a' && c != 's' && c != 'd' && c != 'p') {
 		c = tolower(GET_CHAR());
 	}
 	return c;

@@ -123,15 +123,18 @@ vector<vector<int>> load_game(string username, int &score) {
                 }
                 index++;
             }
-            //remove extra spaces from username
-            user.erase(remove(user.begin(), user.end(), ' '), user.end());
-            //if username matches, extract board
+            //remove space at the end of username
+            user.pop_back();
             stringstream word(line);
             string dummy;
             //so that word starts from the size of board
             for (int i = 0; i < spaces; i++) {
                 word >> dummy;
             }
+            //convert user and username to lowercase
+            transform(user.begin(), user.end(), user.begin(), ::tolower);
+            transform(username.begin(), username.end(), username.begin(), ::tolower);
+            //if username matches, extract board
             if (user == username) {
                 //extract size of board
                 word >> size;

@@ -142,7 +142,6 @@ int main() {
 	getline(cin, username);
 	clear_screen();
 
-
 	menu();
 
 	while (1) {
@@ -180,21 +179,31 @@ int main() {
 		char dir;
 		dir = instant_input_move();
 
-		if (dir == 'p') {
-			int choice = input("You pressed P. Do you want to save the game [1 - Yes // 2 - No]: ", 1, 2);
+		if (dir == 'q') {
+			int choice = input("You pressed Q. Do you want to save and quit the game? [1 - Yes // 2 - No]: ", 1, 2);
 			if (choice == 1) {
 				save_game(board, score, username);
-				cout << green << bold_on << '\n' << "Now please resume your play! Your data has been saved." << bold_off << def;
-				dir = instant_input_move();
-			} else {
-				cout << green << bold_on << '\n' << "You are not saving the game. Please resume your play!" << bold_off << def;
+				board.clear(); score = 0;
+				pause();
+				exit(1);
+			} else if (choice == 2) {
+				cout << green << bold_on << '\n' << "Please resume your play!" << bold_off << def << '\n';
 				dir = instant_input_move();
 			}
+		} else if (dir == 'r') {
+			int choice = input("You pressed R. Do you want to reset the game? [1 - Yes // 2 - No]: ", 1, 2);
+			if (choice == 1) {
+				board.clear(); score = 0; initialize_board(size, board);
+				clear_screen();
+			} else if (choice == 2) {
+				cout << green << bold_on << '\n' << "Please resume your play!" << bold_off << def << '\n';
+				dir = instant_input_move();
+			}
+		} else {
+			calculate_score(dir, score, size, board);
+			move(board, size, dir);
+			generate_random_tile(size, board);
 		}
-
-		calculate_score(dir, score, size, board);
-		move(board, size, dir);
-		generate_random_tile(size, board);
 	}
 
 	return 0;

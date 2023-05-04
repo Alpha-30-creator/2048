@@ -32,3 +32,15 @@ After completing a game, the player's score is added to a leaderboard. The leade
 ## Running the Game
 
 We hope you enjoy playing this text-based version of 2048!
+## --------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## Initializing the Board
+The initialize_board function sets up the game board with a given size and populates it with two random tiles of numeric value 2. It does so by using a nested for loop and a random number generator to place the tiles randomly on the board.
+## Calculating Score
+The calculate_score function takes the player's desired move (up, down, left, or right), the current score, the size of the board, and the current state of the board as input. It then calculates the score the player earns based on the tiles that are combined as a result of the move. The function uses a sliding window approach to check for valid combinations of adjacent cells that add up to twice the value of a single cell, and updates the score based on the sum of the combined tiles.
+## Generating Random Tiles
+The generate_random_tile function generates a random tile of value 2 in an empty cell on the board after every successful move. The function first creates a vector of empty cells, selects a random empty cell, and assigns a value of 2 to that cell.
+## Checking for Game Over
+The check_finish function checks if the game is over. It returns true if the board is full and there are no possible combinations left on the board. The function iterates over the board twice, once horizontally and once vertically, using a sliding window approach to check for valid combinations of adjacent cells that add up to twice the value of a single cell.
+## Moving Tiles
+The move function takes the current state of the board, its size, and the player's desired move (up, down, left or right) as input and updates the board based on the move. It iterates over the rows or columns of the board, depending on the direction of the move, and combines adjacent tiles if their values are equal. If a move results in the combination of tiles, the score is updated accordingly. After combining tiles, the function also shifts the remaining tiles to the left or right, or up or down, depending on the direction of the move.

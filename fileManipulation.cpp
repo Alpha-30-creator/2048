@@ -40,7 +40,7 @@ void save_game(vector<vector<int>> board, int score, string username) {
         }
     } 
     else {
-        //if file does not open, output error and exit
+        //if file does not open, write current game to file and exit
         fin.close();
         ofstream fout;
         fout.open("loadgame.txt");
@@ -53,6 +53,7 @@ void save_game(vector<vector<int>> board, int score, string username) {
             }
         }
         fout << saved_game << endl;
+        fout.close();
         exit(0);
     }
 
@@ -70,8 +71,8 @@ void save_game(vector<vector<int>> board, int score, string username) {
         //if user does not have a saved game yet, add new save game to the end of vector
         saved_games.push_back(username+" "+to_string(board.size())+" "+to_string(score)+" ");
         //add board values to the end of the new save game
-        for(int j=0;j<board.size();j++){
-            for(int k=0;k<board[j].size();k++){
+        for(int j = 0; j < board.size(); j++){
+            for(int k = 0; k < board[j].size(); k++){
                 saved_games.back()=saved_games.back()+to_string(board[j][k])+" ";    
             }
         }
@@ -88,7 +89,7 @@ void save_game(vector<vector<int>> board, int score, string username) {
     } 
     else {
         //write the modified information in the specified format if file opens
-        for(int j=0;i<saved_games.size();i++){
+        for(int j = 0; j < saved_games.size(); j++){
             fout<<saved_games[j]<<endl;
             }
         fout.close();

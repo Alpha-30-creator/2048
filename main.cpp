@@ -142,7 +142,6 @@ int main() {
 	cout << green << bold_on << "Type your username:  " << bold_off << def;
 	getline(cin, username);
 	clear_screen();
-
 	menu();
 
 	while (1) {
@@ -157,7 +156,10 @@ int main() {
 
 			pause();
 			clear_screen();
-			update_leaderboard(score, username);
+			if (update_leaderboard(score, username)) {
+				string s = "Congratulations! You beat your highscore!";
+				cout << yellow << bold_on << "\n" << get_chars_util(' ', 40 - s.length() / 2)<< s << bold_off << def << "\n\n";
+			};
 			display_leaderboard(get_leaderboard());
 			pause();
 

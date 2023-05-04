@@ -20,9 +20,9 @@ void save_game(vector<vector<int>> board, int score, string username) {
     //vector to store saved games of all users from loadgame.txt
     vector<string> saved_games;
     //counter variable to see which line already has save game in loadgame.txt of same user 
-    int i=0;
+    int i = 0;
     //boolean variable to check if user already has a saved game
-    bool user_found=false;
+    bool user_found = false;
     
     fin.open("loadgame.txt");
     //if file opens successfully, read all data
@@ -34,18 +34,19 @@ void save_game(vector<vector<int>> board, int score, string username) {
         //check is the user already has a saved game by looping through all 
         for(i ; i < saved_games.size(); i++){
             if (saved_games[i].substr(0, username.length()) == username){
-                user_found=true;
+                user_found = true;
                 break;
             }
         }
-    } else {
+    } 
+    else {
         //if file does not open, output error and exit
         cout<<"Error in opening the file";
         exit(1);
     }
 
     //if condition to check if user already has a saved game
-    if (user_found == true){
+    if (user_found == true) {
         saved_games[i] = username + " " + to_string(board.size()) + " " + to_string(score) + " ";
         //modify the saved game by overwriting the existing saved game with the new saved game
         for(int j = 0;j < board.size(); j++){
@@ -53,7 +54,8 @@ void save_game(vector<vector<int>> board, int score, string username) {
                 saved_games[i] = saved_games[i] + to_string(board[j][k])+" ";    
             }
         }
-    } else {
+    } 
+    else {
         //if user does not have a saved game yet, add new save game to the end of vector
         saved_games.push_back(username+" "+to_string(board.size())+" "+to_string(score)+" ");
         //add board values to the end of the new save game
@@ -72,7 +74,8 @@ void save_game(vector<vector<int>> board, int score, string username) {
     if (fout.fail()) {
          cout << "Error in opening the file"<<endl;
          exit(1);
-    } else {
+    } 
+    else {
         //write the modified information in the specified format if file opens
         for(int j=0;i<saved_games.size();i++){
             fout<<saved_games[j]<<endl;
@@ -102,9 +105,24 @@ vector<vector<int>> load_game(string username, int &score) {
         //read file line by line
         string line;
         while (getline(fin, line)) {
-            //extract data from line
-            istringstream word(line);
-            word >> user;
+            //extract username from line
+            int index = 0, spaces = 0;
+            while(isdigit(line[index]) == false) {
+                user += line[index];
+                if (line[index] == ' ') {
+                    spaces++;
+                }
+                index++;
+            }
+            //remove extra spaces from username
+            user.erase(remove(user.begin(), user.end(), ' '), user.end());
+            //if username matches, extract board
+            sstringstream word(line);
+            string dummy;
+            //so that word starts from the size of board
+            for (int i = 0; i < spaces; i++) {
+                word >> dummy;
+            }
             if (user == username) {
                 //extract size of board
                 word >> size;

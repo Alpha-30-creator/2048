@@ -6,25 +6,20 @@
 #include <iostream>
 #include <cstdlib> 
 
-#ifdef _WIN32
-#include <conio.h>
-#define GET_CHAR() _getch()
-#else
 #include <termios.h>
 #include <unistd.h>
-#define GET_CHAR() ({ \
-    char __c; \
-    struct termios __old, __new; \
-    tcgetattr(STDIN_FILENO, &__old); \
-    __new = __old; \
-    __new.c_lflag &= ~(ICANON | ECHO); \
-    tcsetattr(STDIN_FILENO, TCSANOW, &__new); \
-    __c = getchar(); \
-    tcsetattr(STDIN_FILENO, TCSANOW, &__old); \
-    if (__c == '\n') __c = '\r'; /* Return '\r' instead of '\n' */ \
-    __c; \
-})
-#endif
+
+void configure_terminal(struct termios &old_termios, struct termios &new_termios) {
+
+    tcgetattr(STDIN_FILENO, &old_termios);
+    new_termios = old_termios;
+    new_termios.c_lflag &= ~(ICANON | ECHO);
+    tcsetattr(STDIN_FILENO, TCSANOW, &new_termios);
+}
+
+void restore_terminal(struct termios &old_termios) {
+    tcsetattr(STDIN_FILENO, TCSANOW, &old_termios);
+}
 
 using namespace std;
 
@@ -33,23 +28,29 @@ int size, score = 0;
 string username;
 
 
-// Pauses the program, press enter to continue
-void pause() {
-	cout << green << bold_on << "\n\nPress enter to continue..." << bold_off << def;
-	char s = GET_CHAR();
-	while (s != '\r') {
-		s = GET_CHAR();
+// Pauses the program, press SPACEBAR to continue
+void pause_util() {
+	struct termios old_termios, new_termios;
+	configure_terminal(old_termios, new_termios);
+	cout << green << bold_on << "\n\nPress SPACEBAR to continue..." << bold_off << def;
+	char s = cin.get();
+	while (s != ' ') {
+		s = cin.get();
 	}
+	restore_terminal(old_termios);
 	cout << '\n';
 }
 
 // This function takes input for user making move without waiting for the user to press Enter.
 char instant_input_move() {
+	struct termios old_termios, new_termios;
+	configure_terminal(old_termios, new_termios);
 	cout << green << bold_on << "\nSWIPE TO MAKE MOVE... (W/A/S/D)" << bold_off << def << '\n';
-	char c = tolower(GET_CHAR());
+	char c = tolower(cin.get());
 	while (c != 'w' && c != 'a' && c != 's' && c != 'd' && c != 'q' && c != 'r') {
-		c = tolower(GET_CHAR());
+		c = tolower(cin.get());
 	}
+	restore_terminal(old_termios);
 	return c;
 
 }
@@ -110,7 +111,7 @@ void menu() {
 		board = load_game(username, score);
 		size = board.size();
 		if (board.empty()) {
-			pause();
+			pause_util();
 			menu();
 		}
 	}
@@ -120,7 +121,7 @@ void menu() {
 
 		print_instructions();
 
-		pause();
+		pause_util();
 		menu();
 	}
 
@@ -154,14 +155,14 @@ int main() {
 		if (check_finish(size, board)) {
 			print_game_over();
 
-			pause();
+			pause_util();
 			clear_screen();
 			if (update_leaderboard(score, username)) {
 				string s = "Congratulations! You beat your highscore!";
 				cout << yellow << bold_on << "\n" << get_chars_util(' ', 40 - s.length() / 2)<< s << bold_off << def << "\n\n";
 			};
 			display_leaderboard(get_leaderboard());
-			pause();
+			pause_util();
 
 			if (input("Do you want to play again? [1 - Yes. 2 - No]: ", 1, 2) == 1) {
 				
@@ -186,7 +187,7 @@ int main() {
 			if (choice == 1) {
 				save_game(board, score, username);
 				board.clear(); score = 0;
-				pause();
+				pause_util();
 				menu();
 			} else if (choice == 2) { // Do not quit
 				cout << green << bold_on << '\n' << "Please resume your play!" << bold_off << def << '\n';

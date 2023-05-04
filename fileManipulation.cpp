@@ -41,8 +41,17 @@ void save_game(vector<vector<int>> board, int score, string username) {
     } 
     else {
         //if file does not open, output error and exit
-        cout<<"Error in opening the file";
-        exit(1);
+        fin.close();
+        ofstream fout;
+        fout.open("loadgame.txt");
+        string saved_game = username + " " + to_string(board.size()) + " " + to_string(score) + " ";
+        for(int j = 0;j < board.size(); j++){
+            for(int k = 0;k < board.size(); k++){
+                saved_game = saved_game + to_string(board[j][k])+" ";    
+            }
+        }
+        fout << saved_game << endl;
+        exit(0);
     }
 
     //if condition to check if user already has a saved game

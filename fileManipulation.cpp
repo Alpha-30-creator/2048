@@ -167,10 +167,7 @@ vector<string> get_leaderboard(){
     //read each line from file
     while (getline(fin, line)) {
         scores.push_back(line);
-        i+=1;
-        if(i>10){  //if file has scores, read scores of top 10 or less depending on how many exist, and return
-            break;
-        }
+        i++;
     }
 
     fin.close();

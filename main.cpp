@@ -43,16 +43,10 @@ void pause() {
 	cout << '\n';
 }
 
-// asks the user for the integer input
-// returns the input of the user
-// min_val - minimum value for the input
-// max_val - maximum value for the input
-// Error 1 - means input is out of boundaries
-// Error 2 - input is not integer
 
 
-// This function takes input without waiting for the user to press Enter.
 
+// This function takes input for user making move without waiting for the user to press Enter.
 char instant_input_move() {
 	cout << "SWIPE TO MAKE MOVE... (W/A/S/D)" << '\n';
 	char c = tolower(GET_CHAR());
@@ -63,6 +57,12 @@ char instant_input_move() {
 
 }
 
+// asks the user for the integer input
+// returns the input of the user
+// min_val - minimum value for the input
+// max_val - maximum value for the input
+// Error 1 - means input is out of boundaries
+// Error 2 - input is not integer
 int input(string message, int min_val, int max_val) {
 	cout << message << '\n';
 	

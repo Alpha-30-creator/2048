@@ -15,9 +15,9 @@ string username;
 
 //pauses the program
 void pause() {
-	char c;
+	string s;
 	cout << "Type anything to continue...";
-	cin >> c;
+	cin >> s;
 }
 
 // asks the user for the integer input
@@ -25,10 +25,21 @@ void pause() {
 // min_val - minimum value for the input
 // max_val - maximum value for the input
 // Error 1 - means input is out of boundaries
+// Error 2 - input is not integer
 int input(string message, int min_val, int max_val) {
 	cout << message << '\n';
-	int value;
-	cin >> value;
+	
+	string s;
+	cin >> s;
+	int value = 0;
+	for (char i : s) {
+		if (i >= '0' && i <= '9') value = value * 10 + (i - '0');
+		else {
+			cout << "Error 2. Type again\n";
+			return input(message, min_val, max_val);
+		}
+	}
+	
 	if (value >= min_val && value <= max_val) return value;
 	else {
 		cout << "Error 1. Type again\n";
@@ -102,14 +113,41 @@ int main() {
 		clear_screen();
 		display_board(board);
 
+		print_red_divider();
 		print_score(score);
+		print_red_divider();
+
+		if (check_finish(size, board)) {
+			cout << "Game Over\n";
+
+			pause();
+			clear_screen();
+			display_leaderboard(get_leaderboard());
+			pause();
+
+			if (input("Do you want to save the game [1 - Yes. 2 - No]: ", 1, 2) == 1) save_game(board, score, username);
+			
+			pause();
+
+			if (input("Do you want to play again? [1 - Yes. 2 - No]: ", 1, 2) == 1) {
+				
+				board.clear();
+
+				menu();
+
+				continue;
+			}
+
+			else break;
+		}
 
 		char dir;
 		cout << "Your move: ";
 		cin >> dir;
 
+		calculate_score(dir, score, size, board);
 		move(board, size, dir);
-		
+
 		generate_random_tile(size, board);
 	}
 

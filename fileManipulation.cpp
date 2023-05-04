@@ -185,39 +185,41 @@ bool update_leaderboard(int score, string username) {
     vector<string> leaderboard = get_leaderboard();
     bool beat_high_score=false;
     bool user_record_exists=false;
-    //if no scores return false
-    if(leaderboard[0]=="No scores yet."){
-        return false;
+    //if no scores add current score to the leaderboard
+    if(leaderboard[0]=="No scores yet.") {
+        leaderboard[0] = username + " " + to_string(score);
     }
     int i=0;
-    //find the position to insert the new score
-    for (i; i < leaderboard.size(); i++) {
+    else {
+        for (i; i < leaderboard.size(); i++) {
         string linedata=leaderboard[i];
         string user="";
         int j=0;
-        //get the username on one line of the file
-        while(linedata[j]!=' '){
-            user.insert(j,1,linedata[j]);
-            i+=1;
-        }
-        //check if username already exists in file
-        if (user==username){
-             //if it does, turn flag true and extract previous score   
-            user_record_exists=true;            
-            int oldscore=stof(linedata.substr(username.length()+1)); //get old score of same user from file
-            if(score>oldscore){ 
-                //if newscore greater than previous score, make a flag true
-                beat_high_score=true; 
+            //get the username on one line of the file
+            while(linedata[j] != ' '){
+                user.insert(j,1,linedata[j]);
+                j++;
             }
-            break;
+            //check if username already exists in file
+            if (user == username){
+                //if it does, turn flag true and extract previous score   
+                user_record_exists = true;            
+                int oldscore = stof(linedata.substr(username.length()+1)); //get old score of same user from file
+                if(score>oldscore){ 
+                    //if newscore greater than previous score, make a flag true
+                    beat_high_score=true; 
+                }
+                break;
+            }
         }
     }
     //insert the new score at the appropriate position
-    if(user_record_exists){
+    if (user_record_exists) {
         //if user record exists and new score is greater, update the oldscore
-        if(beat_high_score){
+        if (beat_high_score) {
             leaderboard[i]=username+" "+to_string(score);
-        }else{
+        }
+        else {
             //if user record exists and doesnt beat high score, end function call without any modification (because file is already sorted)
             return false;
         }
@@ -237,9 +239,10 @@ bool update_leaderboard(int score, string username) {
     //if file does not open, return false
     if (fout.fail()) {
         return false;
-    }else{
+    }
+    else {
         //if file opens save all info on every line
-    for (int i=0;i<leaderboard.size();i++){
+        for (int i=0;i<leaderboard.size();i++) {
             fout<<leaderboard[i]<<endl;
         }
     }

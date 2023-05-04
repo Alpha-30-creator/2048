@@ -156,7 +156,8 @@ int main() {
 
 			pause();
 			clear_screen();
-			display_leaderboard(username, score);
+			update_leaderboard(score, username);
+			display_leaderboard(get_leaderboard());
 			pause();
 
 			if (input("Do you want to save the game [1 - Yes. 2 - No]: ", 1, 2) == 1) save_game(board, score, username);

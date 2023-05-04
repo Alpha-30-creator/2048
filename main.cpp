@@ -132,6 +132,7 @@ int main() {
 			if (input("Do you want to play again? [1 - Yes. 2 - No]: ", 1, 2) == 1) {
 				
 				board.clear();
+				score = 0;
 
 				menu();
 

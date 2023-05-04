@@ -104,6 +104,8 @@ vector<vector<int>> load_game(string username, int &score) {
     vector<vector<int>> board;
     //open file loadgame.txt
     ifstream fin;
+    //convert username to lowercase
+    transform(username.begin(), username.end(), username.begin(), ::tolower);
     fin.open("loadgame.txt");
     //if file does not open
     if (fin.fail()) {
@@ -134,9 +136,6 @@ vector<vector<int>> load_game(string username, int &score) {
             for (int i = 0; i < spaces; i++) {
                 word >> dummy;
             }
-            //convert user and username to lowercase
-            transform(user.begin(), user.end(), user.begin(), ::tolower);
-            transform(username.begin(), username.end(), username.begin(), ::tolower);
             //if username matches, extract board
             if (user == username) {
                 //extract size of board

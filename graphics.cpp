@@ -25,6 +25,7 @@ void print_red_divider() {
     cout << bold_off;
 }
 
+// This function is a utility function for display_board
 void print_row_border(int size) {
     cout << '\n' << get_chars_util(' ', 20);
     cout << red << "+";

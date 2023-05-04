@@ -185,11 +185,11 @@ bool update_leaderboard(int score, string username) {
     vector<string> leaderboard = get_leaderboard();
     bool beat_high_score=false;
     bool user_record_exists=false;
+    int i = 0;
     //if no scores add current score to the leaderboard
     if(leaderboard[0]=="No scores yet.") {
         leaderboard[0] = username + " " + to_string(score);
     }
-    int i=0;
     else {
         for (i; i < leaderboard.size(); i++) {
         string linedata=leaderboard[i];

@@ -102,7 +102,7 @@ void print_instructions() {
     cout << bold_on;
     cout << red << get_chars_util('-', 40 - s.length() / 2) << green << s << red << get_chars_util('-', 40 - s.length() / 2) << def << "\n\n";
     cout << green;
-    s = get_chars_util(' ', 10) + "* GOAL: Accumulate the highest score possible by combining tiles of the same value. The sky is the limit! In order to combine the tiles, the player can shift the tiles on the board UP, LEFT, DOWN or RIGHT.\n\n" + get_chars_util(' ', 10) + "* CONTROLS: Use the W, A, S, and D keys on the keyboard to move the tiles. The tiles can contain only integer values starting from 2, and that are a power of two, like 2, 4, 8, 16, 32, and so on.\n\n" + get_chars_util(' ', 10) + "* ENDING: If the board is full, and there is no possible move to merge like tiles together - the game is over.\n\n" + get_chars_util(' ', 10) + "* SAVE/QUIT: Save the game at any time by pressing the ___ key. Or quit the game without saving by pressing the ____ key.\n\n" + get_chars_util(' ', 10) + "* LOAD GAME: Load your last saved game by choosing the option from the Main Menu.\n\n";
+    s = get_chars_util(' ', 10) + "* GOAL: Accumulate the highest score possible by combining tiles of the same value. The sky is the limit! In order to combine the tiles, the player can shift the tiles on the board UP, LEFT, DOWN or RIGHT.\n\n" + get_chars_util(' ', 10) + "* CONTROLS: Use the W, A, S, and D keys on the keyboard to move the tiles. The tiles can contain only integer values starting from 2, and that are a power of two, like 2, 4, 8, 16, 32, and so on.\n\n" + get_chars_util(' ', 10) + "* ENDING: If the board is full, and there is no possible move to merge like tiles together - the game is over.\n\n" + get_chars_util(' ', 10) + "* SAVE/QUIT/RESET: Save and quit the game at any time by pressing the Q key. Or reset the board by pressing the R key.\n\n" + get_chars_util(' ', 10) + "* LOAD GAME: Load your last saved game by choosing the option from the Main Menu.\n\n";
 
     const int line_length = 60;
     int count = 0;
@@ -154,6 +154,8 @@ void print_menu(string username) {
     s = "2. Load Game";
     cout << get_chars_util(' ', 40 - s.length() / 2) << s << '\n';
     s = "3. Instructions";
+    cout << get_chars_util(' ', 40 - s.length() / 2) << s << "\n";
+    s = "4. Quit Game";
     cout << get_chars_util(' ', 40 - s.length() / 2) << s << "\n\n";
     cout << def;
     print_red_divider();
@@ -205,12 +207,16 @@ ________  ________  _____ ______   _______           ________  ___      ___ ____
 
 // Function to display the leaderboard
 void display_leaderboard(vector<string> leader_board) {
-    string s = " Leader Board ";
+    string s = "  Leader Board  ";
     cout << bold_on;
     cout << red << get_chars_util('-', 40 - s.length() / 2) << green << s << red << get_chars_util('-', 40 - s.length() / 2) << def << "\n\n";
     cout << green;
     //loop through vector and print all lines of leader board
     for (int i = 1; i <= leader_board.size(); i++) {
+        if (i == 1) cout << lightYellow;
+        if (i == 2) cout << cyan;
+        if (i == 3) cout << magenta;
+        if (i > 3) cout << green;
         cout << i << ". " << leader_board[i - 1] << endl;     
     }
     print_red_divider();

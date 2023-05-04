@@ -87,7 +87,7 @@ void menu() {
 
 	print_menu(username);
 
-	int menu_choice = input("Choose option (1-3):", 1, 3);
+	int menu_choice = input("Choose option (1-3):", 1, 4);
 
 	clear_screen();
 
@@ -124,7 +124,7 @@ void menu() {
 	}
 
 	else if (menu_choice == 4) {
-		menu();
+		exit(1);
 		return;
 	}
 }
@@ -182,7 +182,7 @@ int main() {
 				save_game(board, score, username);
 				board.clear(); score = 0;
 				pause();
-				exit(1);
+				menu();
 			} else if (choice == 2) {
 				cout << green << bold_on << '\n' << "Please resume your play!" << bold_off << def << '\n';
 				dir = instant_input_move();

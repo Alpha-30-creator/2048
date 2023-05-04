@@ -200,7 +200,7 @@ bool update_leaderboard(int score, string username) {
             if (user == username){
                 //if it does, turn flag true and extract previous score   
                 user_record_exists = true;            
-                int oldscore = stof(linedata.substr(username.length() + 1)); //get old score of same user from file
+                int oldscore = stof(line.substr(username.length() + 1)); //get old score of same user from file
                 if (score > oldscore){ 
                     //if newscore greater than previous score, make a flag true
                     beat_high_score = true; 

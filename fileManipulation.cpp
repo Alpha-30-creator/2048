@@ -123,8 +123,8 @@ vector<vector<int>> load_game(string username, int &score) {
                 }
                 index++;
             }
-            //remove extra space from username
-            user.erase(remove(user.begin(), user.end(), ' '), user.end());
+            //remove space at the end of username
+            user.pop_back();
             stringstream word(line);
             string dummy;
             //so that word starts from the size of board

@@ -94,7 +94,7 @@ vector<vector<int>> load_game(string username, int &score) {
     //if file does not open
     if (fin.fail()) {
         cout << "User does not have any saved games." << endl;
-        exit(1);
+        return board;
     }
     //if file opens
     else {
@@ -128,7 +128,7 @@ vector<vector<int>> load_game(string username, int &score) {
     //if board empty, exit program. else return board
     if (board.empty()) {
         cout << "User does not have any saved games." << endl;
-        exit(1);
+        return board;
     }
     else {
         return board;

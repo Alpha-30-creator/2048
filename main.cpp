@@ -6,20 +6,67 @@
 #include <iostream>
 #include <cstdlib> 
 
-#include <termios.h>
-#include <unistd.h>
+#ifdef _WIN32
+	#include <conio.h>
+	// Pauses the program, press SPACEBAR to continue
+	void pause_util() {
+		cout << green << bold_on << "\n\nPress SPACEBAR to continue..." << bold_off << def;
+		char s = _getch();
+		while (s != ' ') {
+			s = _getch();
+		}
+		cout << '\n';
+	}
+	// This function takes input for user making move without waiting for the user to press Enter.
+	char instant_input_move() {
+		cout << green << bold_on << "\nSWIPE TO MAKE MOVE... (W/A/S/D)" << bold_off << def << '\n';
+		char c = tolower(_getch());
+		while (c != 'w' && c != 'a' && c != 's' && c != 'd' && c != 'q' && c != 'r') {
+			c = tolower(_getch());
+		}
+		return c;
+	}
+#else
+	#include <termios.h>
+	#include <unistd.h>
 
-void configure_terminal(struct termios &old_termios, struct termios &new_termios) {
+	void configure_terminal(struct termios &old_termios, struct termios &new_termios) {
 
-    tcgetattr(STDIN_FILENO, &old_termios);
-    new_termios = old_termios;
-    new_termios.c_lflag &= ~(ICANON | ECHO);
-    tcsetattr(STDIN_FILENO, TCSANOW, &new_termios);
-}
+		tcgetattr(STDIN_FILENO, &old_termios);
+		new_termios = old_termios;
+		new_termios.c_lflag &= ~(ICANON | ECHO);
+		tcsetattr(STDIN_FILENO, TCSANOW, &new_termios);
+	}
 
-void restore_terminal(struct termios &old_termios) {
-    tcsetattr(STDIN_FILENO, TCSANOW, &old_termios);
-}
+	void restore_terminal(struct termios &old_termios) {
+		tcsetattr(STDIN_FILENO, TCSANOW, &old_termios);
+	}
+	// Pauses the program, press SPACEBAR to continue
+	void pause_util() {
+		struct termios old_termios, new_termios;
+		configure_terminal(old_termios, new_termios);
+		cout << green << bold_on << "\n\nPress SPACEBAR to continue..." << bold_off << def;
+		char s = cin.get();
+		while (s != ' ') {
+			s = cin.get();
+		}
+		restore_terminal(old_termios);
+		cout << '\n';
+	}
+
+	// This function takes input for user making move without waiting for the user to press Enter.
+	char instant_input_move() {
+		struct termios old_termios, new_termios;
+		configure_terminal(old_termios, new_termios);
+		cout << green << bold_on << "\nSWIPE TO MAKE MOVE... (W/A/S/D)" << bold_off << def << '\n';
+		char c = tolower(cin.get());
+		while (c != 'w' && c != 'a' && c != 's' && c != 'd' && c != 'q' && c != 'r') {
+			c = tolower(cin.get());
+		}
+		restore_terminal(old_termios);
+		return c;
+	}
+#endif
 
 using namespace std;
 
@@ -28,32 +75,7 @@ int size, score = 0;
 string username;
 
 
-// Pauses the program, press SPACEBAR to continue
-void pause_util() {
-	struct termios old_termios, new_termios;
-	configure_terminal(old_termios, new_termios);
-	cout << green << bold_on << "\n\nPress SPACEBAR to continue..." << bold_off << def;
-	char s = cin.get();
-	while (s != ' ') {
-		s = cin.get();
-	}
-	restore_terminal(old_termios);
-	cout << '\n';
-}
 
-// This function takes input for user making move without waiting for the user to press Enter.
-char instant_input_move() {
-	struct termios old_termios, new_termios;
-	configure_terminal(old_termios, new_termios);
-	cout << green << bold_on << "\nSWIPE TO MAKE MOVE... (W/A/S/D)" << bold_off << def << '\n';
-	char c = tolower(cin.get());
-	while (c != 'w' && c != 'a' && c != 's' && c != 'd' && c != 'q' && c != 'r') {
-		c = tolower(cin.get());
-	}
-	restore_terminal(old_termios);
-	return c;
-
-}
 
 // asks the user for the integer input
 // returns the input of the user

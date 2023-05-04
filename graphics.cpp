@@ -25,13 +25,22 @@ void print_red_divider() {
     cout << bold_off;
 }
 
+void print_row_border(int size) {
+    cout << '\n' << get_chars_util(' ', 20);
+    cout << red << "+";
+    for (int i = 0; i < size; i++) {
+        cout << red << setfill('-') << setw(9) << "" << setfill(' ') << "+" << def;
+    }
+    cout << '\n';
+}
+
 // Function to display the current state of the board
 void display_board(vector<vector<int>>& board) {
     int rowSize = board.size();
     int colSize = board[0].size();
-    cout << "\n\n" << bold_on;
+    cout << '\n' << bold_on;
     // upper border of table
-    cout << get_chars_util(' ', 20) << red << setfill('-') << setw(colSize * 10 + 1) << "" << setfill(' ') << def << endl;
+    print_row_border(colSize);
 
     for (int i = 0; i < rowSize; ++i) {
 
@@ -61,7 +70,7 @@ void display_board(vector<vector<int>>& board) {
         }
 
         // lower border of row
-        cout << red << endl << get_chars_util(' ', 20) <<  setfill('-') << setw(colSize * 10 + 1) << "" << setfill(' ') << def << endl;
+        print_row_border(colSize);
     }
     cout << bold_off;
 }

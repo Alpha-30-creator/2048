@@ -35,7 +35,7 @@ string username;
 
 // Pauses the program, press enter to continue
 void pause() {
-	cout << "\n\nPress enter to continue...";
+	cout << green << bold_on << "\n\nPress enter to continue..." << bold_off << def;
 	char s = GET_CHAR();
 	while (s != '\r') {
 		s = GET_CHAR();
@@ -48,7 +48,7 @@ void pause() {
 
 // This function takes input for user making move without waiting for the user to press Enter.
 char instant_input_move() {
-	cout << "SWIPE TO MAKE MOVE... (W/A/S/D)" << '\n';
+	cout << green << bold_on << "\nSWIPE TO MAKE MOVE... (W/A/S/D)" << bold_off << def << '\n';
 	char c = tolower(GET_CHAR());
 	while (c != 'w' && c != 'a' && c != 's' && c != 'd') {
 		c = tolower(GET_CHAR());
@@ -64,7 +64,7 @@ char instant_input_move() {
 // Error 1 - means input is out of boundaries
 // Error 2 - input is not integer
 int input(string message, int min_val, int max_val) {
-	cout << message << '\n';
+	cout << green << bold_on << '\n' << message << bold_off << def << '\n';
 	
 	string s;
 	cin >> s;
@@ -72,14 +72,14 @@ int input(string message, int min_val, int max_val) {
 	for (char i : s) {
 		if (i >= '0' && i <= '9') value = value * 10 + (i - '0');
 		else {
-			cout << "Error 2. Type again\n";
+			cout << red << bold_on << "[ERROR] Type again\n" << bold_off << def;
 			return input(message, min_val, max_val);
 		}
 	}
 	
 	if (value >= min_val && value <= max_val) return value;
 	else {
-		cout << "Error 1. Type again\n";
+		cout << red << bold_on << "[ERROR] Type again\n" << bold_off << def;
 		return input(message, min_val, max_val);
 	}
 }
@@ -135,11 +135,13 @@ void menu() {
 int main() {
 	clear_screen();
 
+	print_red_divider();
 	print_title();
+	print_red_divider();
 
 	for (int i = 1; i <= 3; i++) cout << '\n';
 
-	cout << "Type your username:\n";
+	cout << green << bold_on << "Type your username:  " << bold_off << def;
 	getline(cin, username);
 	clear_screen();
 

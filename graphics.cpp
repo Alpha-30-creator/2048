@@ -27,7 +27,7 @@ void print_red_divider() {
 
 // This function is a utility function for display_board
 void print_row_border(int size) {
-    cout << '\n' << get_chars_util(' ', 20);
+    cout << '\n' << get_chars_util(' ', 4*20/size);
     cout << red << "+";
     for (int i = 0; i < size; i++) {
         cout << red << setfill('-') << setw(9) << "" << setfill(' ') << "+" << def;
@@ -46,14 +46,14 @@ void display_board(vector<vector<int>>& board) {
     for (int i = 0; i < rowSize; ++i) {
 
         // empty row above tile value
-        cout << get_chars_util(' ', 20) << red << "|" << def;
+        cout << get_chars_util(' ', 4*20/rowSize) << red << "|" << def;
         for (int j = 0; j < colSize; ++j) {
             cout << red << setw(5) << "" << setw(4) << "" << "|" << def;
         }
         cout << endl;
 
         // row containing tile value
-        cout << get_chars_util(' ', 20);
+        cout << get_chars_util(' ', 4*20/rowSize);
         cout << red << "|" << def;
         for (int j = 0; j < colSize; ++j) {
             //if value is 0 print empty cell as 0 represents empty cell
@@ -65,7 +65,7 @@ void display_board(vector<vector<int>>& board) {
         }
 
         // empty row below the tile value 
-        cout << endl << get_chars_util(' ', 20) << red << "|" << def;
+        cout << endl << get_chars_util(' ', 4*20/rowSize) << red << "|" << def;
         for (int j = 0; j < colSize; ++j) {
             cout << red << setw(5) << "" << setw(4) << "" << "|" << def;
         }

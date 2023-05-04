@@ -18,68 +18,67 @@ using namespace std;
 void save_game(vector<vector<int>> board, int score, string username) {
     ifstream fin;
     //vector to store saved games of all users from loadgame.txt
-    vector<string> savedgames;
+    vector<string> saved_games;
     //counter variable to see which line already has save game in loadgame.txt of same user 
     int i=0;
     //boolean variable to check if user already has a saved game
-    bool founduser=false;
+    bool user_found=false;
     
     fin.open("loadgame.txt");
     //if file opens successfully, read all data
     if(!fin.fail()){
-    string line;
-    while(getline(fin, line)){
-        savedgames.push_back(line);
-    }
-    //check is the user already has a saved game by looping through all 
-    for(i;i<savedgames.size();i++){
-        if(savedgames[i].substr(0,username.length())==username){
-            founduser=true;
-            break;
+        string line;
+        while(getline(fin, line)){
+            saved_games.push_back(line);
         }
-    }
-    }
-    else{
+        //check is the user already has a saved game by looping through all 
+        for(i ; i < saved_games.size(); i++){
+            if (saved_games[i].substr(0, username.length()) == username){
+                user_found=true;
+                break;
+            }
+        }
+    } else {
         //if file does not open, output error and exit
         cout<<"Error in opening the file";
         exit(1);
     }
+
     //if condition to check if user already has a saved game
-    if(founduser==true){
-        savedgames[i]=username+" "+to_string(board.size())+" "+to_string(score)+" ";
+    if (user_found == true){
+        saved_games[i] = username + " " + to_string(board.size()) + " " + to_string(score) + " ";
         //modify the saved game by overwriting the existing saved game with the new saved game
-        for(int j=0;j<board.size();j++){
-            for(int k=0;k<board.size();k++){
-            savedgames[i
-            ]=savedgames[i]+to_string(board[j][k])+" ";    
+        for(int j = 0;j < board.size(); j++){
+            for(int k = 0;k < board.size(); k++){
+                saved_games[i] = saved_games[i] + to_string(board[j][k])+" ";    
             }
         }
-    }else{
+    } else {
         //if user does not have a saved game yet, add new save game to the end of vector
-        savedgames.push_back(username+" "+to_string(board.size())+" "+to_string(score)+" ");
+        saved_games.push_back(username+" "+to_string(board.size())+" "+to_string(score)+" ");
         //add board values to the end of the new save game
         for(int j=0;j<board.size();j++){
             for(int k=0;k<board[j].size();k++){
-                savedgames.back()=savedgames.back()+to_string(board[j][k])+" ";    
+                saved_games.back()=saved_games.back()+to_string(board[j][k])+" ";    
             }
         }
     }
     
     ofstream fout;
-    //ocreating or overwriting loadgame.txt file, as the modified data is in vector 
+    // Creating or overwriting loadgame.txt file, as the modified data is in vector 
     fout.open("loadgame.txt");
     
     //if fail in opening file, output error and exit
     if (fout.fail()) {
          cout << "Error in opening the file"<<endl;
          exit(1);
-    }
-    else {
+    } else {
         //write the modified information in the specified format if file opens
-        for(int j=0;i<savedgames.size();i++){
-            fout<<savedgames[j]<<endl;
+        for(int j=0;i<saved_games.size();i++){
+            fout<<saved_games[j]<<endl;
             }
         fout.close();
+        
         cout<<"Game saved successfully!"<<endl;
     }
 }

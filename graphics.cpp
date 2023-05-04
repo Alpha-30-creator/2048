@@ -18,6 +18,13 @@ string get_chars_util(char ch, int number_of_chars) {
     return str;
 }
 
+// This function prints a bold red divider
+void print_red_divider() {
+    cout << bold_on;
+    cout << red << get_chars_util('-', 80) << def << '\n';
+    cout << bold_off;
+}
+
 // Function to display the current state of the board
 void display_board(vector<vector<int>>& board) {
     int rowSize = board.size();
@@ -76,12 +83,7 @@ void print_title() {
     cout << green << bold_on << title_card_2048 << bold_off << def; // Using color definitions from color.h header file
     cout << "\n\n\n";
 }
-// This function prints a bold red divider
-void print_red_divider() {
-    cout << bold_on;
-    cout << red << get_chars_util('-', 80) << def << '\n';
-    cout << bold_off;
-}
+
 
 // Function to print game instructions
 // This function also uses the color codes defined in color.h header file and uses the utility function get_chars_util to print character
@@ -167,6 +169,14 @@ void print_difficulty_menu() {
     cout << get_chars_util(' ', 40 - s.length() / 2) << s << "\n\n";
     print_red_divider();
     cout << bold_off;
+}
+
+void print_score(int score) {
+    string s = "  Score: " + to_string(score) + "  ";
+    cout << def << bold_on;
+    cout << cyan; 
+    cout << '\n' << get_chars_util('~', 40 - s.length() / 2) << s << get_chars_util('~', 40 - s.length() / 2) << "\n\n";
+    cout << bold_off << def;
 }
 
 // Function to display the leaderboard

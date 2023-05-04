@@ -15,6 +15,7 @@ void display_loading();
 void display_board(vector<vector<int>>& board);
 void print_menu(string username);
 void print_difficulty_menu();
+void print_score(int score);
 void display_leaderboard(vector<string> leader_board);
 void clear_screen();
   

@@ -102,9 +102,7 @@ int main() {
 		clear_screen();
 		display_board(board);
 
-		print_red_divider();
-		cout << "Score: " << score << '\n';
-		print_red_divider();
+		print_score(score);
 
 		string dir;
 		cout << "Your move: ";

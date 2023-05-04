@@ -43,9 +43,6 @@ void pause() {
 	cout << '\n';
 }
 
-
-
-
 // This function takes input for user making move without waiting for the user to press Enter.
 char instant_input_move() {
 	cout << green << bold_on << "\nSWIPE TO MAKE MOVE... (W/A/S/D)" << bold_off << def << '\n';
@@ -182,6 +179,18 @@ int main() {
 
 		char dir;
 		dir = instant_input_move();
+
+		if (dir == 'p') {
+			int choice = input("You pressed P. Do you want to save the game [1 - Yes // 2 - No]: ", 1, 2);
+			if (choice == 1) {
+				save_game(board, score, username);
+				cout << green << bold_on << '\n' << "Now please resume your play! Your data has been saved." << bold_off << def;
+				dir = instant_input_move();
+			} else {
+				cout << green << bold_on << '\n' << "You are not saving the game. Please resume your play!" << bold_off << def;
+				dir = instant_input_move();
+			}
+		}
 
 		calculate_score(dir, score, size, board);
 		move(board, size, dir);

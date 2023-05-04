@@ -104,18 +104,12 @@ int main() {
 
 		print_score(score);
 
-		string dir;
+		char dir;
 		cout << "Your move: ";
 		cin >> dir;
+
+		move(board, size, dir);
 		
-		dir[0] = tolower(dir[0]);
-		dir = dir[0];
-
-		if (dir == "r") move(board, size, "right");
-		if (dir == "l") move(board, size, "left");
-		if (dir == "d") move(board, size, "down");
-		if (dir == "u") move(board, size, "up");	
-
 		generate_random_tile(size, board);
 	}
 

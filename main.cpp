@@ -87,7 +87,7 @@ void menu() {
 
 	print_menu(username);
 
-	int menu_choice = input("Choose option (1-3):", 1, 4);
+	int menu_choice = input("Choose option (1-4):", 1, 4);
 
 	clear_screen();
 
@@ -108,6 +108,7 @@ void menu() {
 
 	else if (menu_choice == 2) {
 		board = load_game(username, score);
+		size = board.size();
 		if (board.empty()) {
 			pause();
 			menu();

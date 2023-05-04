@@ -209,17 +209,19 @@ ________  ________  _____ ______   _______           ________  ___      ___ ____
 void display_leaderboard(vector<string> leader_board) {
     string s = "  Leader Board  ";
     cout << bold_on;
-    cout << red << get_chars_util('-', 40 - s.length() / 2) << green << s << red << get_chars_util('-', 40 - s.length() / 2) << def << "\n\n";
+    cout << yellow << get_chars_util('*', 40 - s.length() / 2) << green << s << yellow << get_chars_util('*', 40 - s.length() / 2) << def << "\n\n";
     cout << green;
     //loop through vector and print all lines of leader board
-    for (int i = 1; i <= leader_board.size(); i++) {
+    for (int i = 1; i <= leader_board.size(); i++) { 
         if (i == 1) cout << lightYellow;
-        if (i == 2) cout << cyan;
-        if (i == 3) cout << magenta;
+        if (i == 2) cout << magenta;
+        if (i == 3) cout << cyan;
         if (i > 3) cout << green;
-        cout << i << ". " << leader_board[i - 1] << endl;     
+        cout << setw(33) << i << ". ";
+        cout << leader_board[i - 1] << endl;     
     }
-    print_red_divider();
+    cout << '\n';
+    cout << yellow << get_chars_util('*', 80) << def << '\n';
     cout << bold_off;
     cout << def;
 }

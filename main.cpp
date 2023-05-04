@@ -173,7 +173,7 @@ int main() {
 				continue;
 			}
 
-			else break;
+			else menu();
 		}
 
 		char dir;

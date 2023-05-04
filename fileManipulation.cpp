@@ -191,14 +191,11 @@ bool update_leaderboard(int score, string username) {
     }
     else {
         for (i; i < leaderboard.size(); i++) {
-        string linedata=leaderboard[i];
-        string user="";
-        int j=0;
+        string line = leaderboard[i];
+        string user = "";
+        int j = 0;
             //get the username on one line of the file
-            while(linedata[j] != ' '){
-                user.insert(j,1,linedata[j]);
-                j++;
-            }
+            user = line.substr(0, username.length());
             //check if username already exists in file
             if (user == username){
                 //if it does, turn flag true and extract previous score   

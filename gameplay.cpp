@@ -7,8 +7,11 @@
 
 using namespace std;
 
-// Function to initialize the board 
+// Function to initialize the board
+// Inputs: integer size of the board & 2D vector for board (PASS-BY-REFERENCE).
+// Outputs: Modifies the board within the function.
 void initialize_board(int size, vector<vector<int>> &board) {
+    
     // Resize the board with the given size and initialize its elements with 0(empty positions)
     for(int i= 0; i < size; i++){
         vector<int> row;
@@ -37,7 +40,9 @@ void initialize_board(int size, vector<vector<int>> &board) {
     }
 }
 
-//Function to calculate the score of the board after a move
+// Function to calculate the score of the board after a move.
+// INPUTS: The move made by the user, the current score (PASS-BY-REFERENCE), the size of the board, 2D vector board
+// OUTPUTS: Modifies the score within the function.
 void calculate_score(char move, int &score, int size, vector<vector<int>> &board) {
     int temp = 0;
     
@@ -117,12 +122,9 @@ void calculate_score(char move, int &score, int size, vector<vector<int>> &board
     }
 }
 
-// (generate_random_tile) := Function to generate a random 2-tile after every move is done.
+// Function to generate a random 2-tile after every move is done.
 // Inputs: (i) integer size of the board, (ii) 2D vector of the current board as "pass-by-reference".
 // Outputs: Nothing. It modifies the board within the function.
-// Note: A random tile is generated no matter what as long as the game is running (i.e. the game is not finished)
-//      because after every successful move, the total number of filled tiles must decrease by at least.
-
 void generate_random_tile(int size, vector<vector<int>> &board) {
     // Create a vector containing pairs of coordinates (i, j) of currently empty tiles
     vector<pair<int, int>> empty_tiles;
@@ -135,6 +137,7 @@ void generate_random_tile(int size, vector<vector<int>> &board) {
             }
         }
     }
+    
     // Find number of empty tiles
     int num_of_empty_tiles = empty_tiles.size();
     if (num_of_empty_tiles > 0) {
@@ -152,9 +155,7 @@ void generate_random_tile(int size, vector<vector<int>> &board) {
 
 // (check_finish) := Function to check if the game has finished.
 // Inputs: (i) integer size of the board, (ii) 2D vector for the current state of board.
-// Outputs: A boolean value indicating if the game is finished or not. If finished, return true. If not, return false. 
-// Note: Game finishes when the board is full && there are no possible combinations left on the board
-
+// Outputs: A boolean value indicating if the game is finished or not. If finished, return true. If not, return false.
 bool check_finish(int size, vector<vector<int>> board) {
 
     // Check if board is full by checking if any tile is 0.
@@ -166,15 +167,17 @@ bool check_finish(int size, vector<vector<int>> board) {
         }
     }
 
-    // Now  check for combinations (logic described below)
-    // *Explanation of logic*
-    // The code checks if the game is finished or not by looking for any valid combinations of adjacent cells that add up to
-    // twice the value of a single cell. If such combinations exist, the game is not finished yet, and the function should return
-    // true. If no such combinations exist, the game is finished, and the function should return false.
+    /* 
+        Now check for combinations (logic described below)
+        *Explanation of logic*
+        The code checks if the game is finished or not by looking for any valid combinations of adjacent cells that add up to
+        twice the value of a single cell. If such combinations exist, the game is not finished yet, and the function should return
+        true. If no such combinations exist, the game is finished, and the function should return false.
 
-    // It iterates through the board twice, once horizontally and once vertically, using a sliding window approach to check for
-    // valid combinations of adjacent cells. The sliding window approach is efficient because it avoids the need to iterate through
-    // all possible combinations of cells, and it allows the code to quickly identify valid combinations.
+        It iterates through the board twice, once horizontally and once vertically, using a sliding window approach to check for
+        valid combinations of adjacent cells. The sliding window approach is efficient because it avoids the need to iterate through
+        all possible combinations of cells, and it allows the code to quickly identify valid combinations.
+    */
 
 
     // Checking horizontally (logic described above)

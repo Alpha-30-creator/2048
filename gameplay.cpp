@@ -229,14 +229,30 @@ bool check_finish(int size, vector<vector<int>> board) {
 }
 
 
+
+/*
+	moves all the tiles to left, right, down, or up
+	board - 2d vector that stores the game board
+	size - the dimension of the game board
+	dir - direction of the move ('w', 'a', 's', 'd')
+	
+	makes changes to the 2d vector directly
+*/
+	
 void move(vector<vector<int>> &board, int size, char dir) {
 
 	if (dir == 'a' || dir == 'd') {
 		
 		
-		for (int i = 0; i < size; i++) {
+		for (int i = 0; i < size; i++) { // iterate over all rows
 			vector<int> new_row;
-
+	
+			/*
+				create a new empty vector for each row
+				pushes all the non-zero values from the row to this vector
+				during the pushing process, if the value of the current tile equals to the last element in the vector, then they merge
+			*/
+			
 			if (dir == 'a') {
 				for (int j = 0; j < size; j++) {
 					if (board[i][j] == 0) continue;
@@ -246,6 +262,10 @@ void move(vector<vector<int>> &board, int size, char dir) {
 				}
 			}
 
+			/*
+				if direction is right, apply same solution as for left but with opposite iteration and reverse the vector at the end
+			*/
+			
 			if (dir == 'd') {
 				for (int j = size - 1; j >= 0; j--) {
 
@@ -257,8 +277,8 @@ void move(vector<vector<int>> &board, int size, char dir) {
 				}
 			}
 			
-			new_row.resize(size, 0);
-            if (dir == 'd') reverse(new_row.begin(), new_row.end());
+			new_row.resize(size, 0); 
+           		if (dir == 'd') reverse(new_row.begin(), new_row.end());  
 
 			board[i] = new_row;
 		}
@@ -268,9 +288,11 @@ void move(vector<vector<int>> &board, int size, char dir) {
 
 	if (dir == 'w' || dir == 's') {
 		
-		for (int j = 0; j < size; j++) {
+		for (int j = 0; j < size; j++) { // iterate over all columns
 			vector<int> new_col;
 
+			// the logick applies for up and down movements, but now we iterate over each column instead of rows
+			
 			if (dir == 'w') {
 				for (int i = 0; i < size; i++) {
 					if (board[i][j] == 0) continue;

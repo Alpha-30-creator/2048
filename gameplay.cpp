@@ -273,9 +273,7 @@ void move(vector<vector<int>> &board, int size, char dir) {
 				}
 			}
 
-			/*
-				if direction is right, apply same solution as for left but with opposite iteration and reverse the vector at the end
-			*/
+			//if direction is right, apply same solution as for left but with opposite iteration and reverse the vector at the end
 			
 			if (dir == 'd') {
 				for (int j = size - 1; j >= 0; j--) {
@@ -302,7 +300,7 @@ void move(vector<vector<int>> &board, int size, char dir) {
 		for (int j = 0; j < size; j++) { // iterate over all columns
 			vector<int> new_col;
 
-			// the logick applies for up and down movements, but now we iterate over each column instead of rows
+			// the logic applies for up and down movements, but now we iterate over each column instead of rows
 			
 			if (dir == 'w') {
 				for (int i = 0; i < size; i++) {

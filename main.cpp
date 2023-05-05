@@ -6,9 +6,18 @@
 #include <iostream>
 #include <cstdlib> 
 
+// Windows
 #ifdef _WIN32
 	#include <conio.h>
-	// Pauses the program, press SPACEBAR to continue
+	/*
+		(pause_util) := Pauses the program, press SPACEBAR to continue
+		input: none
+		output: void
+		Logic:
+			1. Prints the message to press SPACEBAR to continue
+			2. Takes input from the user
+			3. If the input is not SPACEBAR, then repeat step 2
+	*/
 	void pause_util() {
 		cout << green << bold_on << "\n\nPress SPACEBAR to continue..." << bold_off << def;
 		char s = _getch();
@@ -17,7 +26,15 @@
 		}
 		cout << '\n';
 	}
-	// This function takes input for user making move without waiting for the user to press Enter.
+	/*
+		(instant_input_move) := This function takes input for user making move without waiting for the user to press Enter.
+		input: none
+		output: char
+		Logic:
+			1. Prints the message to swipe to make move
+			2. Takes input from the user
+			3. If the input is not w, a, s, d, q, r, then repeat step 2
+	*/
 	char instant_input_move() {
 		cout << green << bold_on << "\nSWIPE TO MAKE MOVE... (W/A/S/D)" << bold_off << def << '\n';
 		char c = tolower(_getch());
@@ -26,10 +43,19 @@
 		}
 		return c;
 	}
+// Linux and Mac
 #else
 	#include <termios.h>
 	#include <unistd.h>
 
+	/*
+		(configure_terminal) := Configures the terminal to take input without waiting for the user to press Enter.
+		input: struct termios &old_termios, struct termios &new_termios
+		output: void
+		Logic:
+			1. Gets the current terminal settings
+			2. Sets the new terminal settings
+	*/
 	void configure_terminal(struct termios &old_termios, struct termios &new_termios) {
 
 		tcgetattr(STDIN_FILENO, &old_termios);
@@ -38,6 +64,13 @@
 		tcsetattr(STDIN_FILENO, TCSANOW, &new_termios);
 	}
 
+	/*
+		(restore_terminal) := Restores the terminal to take input after waiting for the user to press Enter.
+		input: struct termios &old_termios
+		output: void
+		Logic:
+			1. Sets the old terminal settings
+	*/
 	void restore_terminal(struct termios &old_termios) {
 		tcsetattr(STDIN_FILENO, TCSANOW, &old_termios);
 	}
@@ -77,12 +110,16 @@ string username;
 
 
 
-// asks the user for the integer input
-// returns the input of the user
-// min_val - minimum value for the input
-// max_val - maximum value for the input
-// Error 1 - means input is out of boundaries
-// Error 2 - input is not integer
+/*
+	(input) := Takes input from the user
+	input: string message, int min_val, int max_val
+	output: int
+	Logic:
+		1. Prints the message
+		2. Takes input from the user
+		3. If the input is not a number, then repeat step 2
+		4. If the input is not in the range [min_val, max_val], then repeat step 2
+*/
 int input(string message, int min_val, int max_val) {
 	cout << green << bold_on << '\n' << message << bold_off << def << '\n';
 	
@@ -153,6 +190,7 @@ void menu() {
 	}
 }
 
+// main function
 int main() {
 	clear_screen();
 

@@ -9,7 +9,17 @@
 
 using namespace std;
 
-// Utility function for printing a specific character a specific number of times
+/*
+    (get_chars_util) := This function is a utility function for display_board
+    Inputs: char ch, int number_of_chars (both passed by value)
+    Outputs: string
+    Purpose: This function returns a string of characters
+    Logic:
+        1. Initialize a string str to empty string
+        2. Iterate from 0 to number_of_chars
+            2.1 Append ch to str
+        3. Return str
+*/
 string get_chars_util(char ch, int number_of_chars) {
     string str = "";
     for (int i = 0; i < number_of_chars; i++) {
@@ -18,14 +28,24 @@ string get_chars_util(char ch, int number_of_chars) {
     return str;
 }
 
-// This function prints a bold red divider
+/*
+    (print_red_divider) := This function is a utility function for display_board
+    Inputs: none
+    Outputs: void
+    Purpose: This function prints a red divider
+*/
 void print_red_divider() {
     cout << bold_on;
     cout << red << get_chars_util('-', 80) << def << '\n';
     cout << bold_off;
 }
 
-// This function is a utility function for display_board
+/*
+    (print_row_border) := This function is a utility function for display_board
+    Inputs: int size (passed by value)
+    Outputs: void
+    Purpose: This function prints the border of a row
+*/
 void print_row_border(int size) {
     cout << '\n' << get_chars_util(' ', 4*20/size);
     cout << red << "+";
@@ -35,7 +55,20 @@ void print_row_border(int size) {
     cout << '\n';
 }
 
-// Function to display the current state of the board
+/*
+    (display_board) := This function is used to display the board
+    Inputs: vector<vector<int>>& board (passed by reference)
+    Outputs: void
+    Purpose: This function displays the board
+    Logic:
+        1. Get the size of the board
+        2. Iterate from 0 to size of board
+            2.1 Print the upper border of the row
+            2.2 Print the empty row above tile value
+            2.3 Print the row containing tile value
+            2.4 Print the empty row below tile value
+            2.5 Print the lower border of the row
+*/
 void display_board(vector<vector<int>>& board) {
     int rowSize = board.size();
     int colSize = board[0].size();
@@ -76,7 +109,12 @@ void display_board(vector<vector<int>>& board) {
     cout << bold_off;
 }
 
-// Function to print the title of the game when the game is run.
+/*
+    (print_title) := This function is used to print the title card
+    Inputs: void
+    Outputs: void
+    Purpose: This function prints the title card
+*/
 void print_title() {
     string title_card_2048 = R"(
 
@@ -95,8 +133,12 @@ void print_title() {
 }
 
 
-// Function to print game instructions
-// This function also uses the color codes defined in color.h header file and uses the utility function get_chars_util to print character
+/*
+    (print_instructions) := This function is used to print the instructions
+    Inputs: void
+    Outputs: void
+    Purpose: This function prints the instructions
+*/
 void print_instructions() {
     string s = "  Instructions  ";
     cout << bold_on;
@@ -134,14 +176,13 @@ void print_instructions() {
     cout << bold_off;
 }
 
-// Function to display loading s
-void display_loading() {
-// Output a s to let the user know that the game is being loaded
-    cout << "Loading 2048 game...\n\n";
-}
 
-//Function to print main menu
-// This function also uses the color codes defined in color.h header file and uses the utility function get_chars_util to print character
+/*
+    (print_menu) := This function is used to print the menu
+    Inputs: string username
+    Outputs: void
+    Purpose: This function prints the menu
+*/
 void print_menu(string username) {
     string s = "  Menu  ";
     cout << bold_on;
@@ -162,8 +203,12 @@ void print_menu(string username) {
     cout << bold_off;
 }
 
-// Function to display the difficulty level
-
+/*
+    (print_difficulty_menu) := This function is used to print the difficulty menu
+    Inputs: void
+    Outputs: void
+    Purpose: This function prints the difficulty menu
+*/
 void print_difficulty_menu() {
     string s = "  Difficulty  ";
     cout << bold_on;
@@ -183,6 +228,12 @@ void print_difficulty_menu() {
     cout << bold_off;
 }
 
+/*
+    (print_board) := This function is used to print the board
+    Inputs: vector<vector<int>> board
+    Outputs: void
+    Purpose: This function prints the board
+*/
 void print_score(int score) {
     string s = "  Score: " + to_string(score) + "  ";
     cout << def << bold_on;
@@ -191,6 +242,12 @@ void print_score(int score) {
     cout << bold_off << def;
 }
 
+/*
+    (print_game_pver) := This function prints the game over screen
+    Inputs: none
+    Outputs: void
+    Purpose: This function prints the game over screen
+*/
 void print_game_over() {
     string game_over = R"(
 ________  ________  _____ ______   _______           ________  ___      ___ _______   ________     
@@ -205,7 +262,12 @@ ________  ________  _____ ______   _______           ________  ___      ___ ____
     cout << red << bold_on << game_over << bold_off << def << "\n\n";
 }
 
-// Function to display the leaderboard
+/*
+    (display_leaderboard) := This function is used to display the leader board
+    Inputs: vector<string> leader_board
+    Outputs: void
+    Purpose: This function displays the leader board
+*/
 void display_leaderboard(vector<string> leader_board) {
     string s = "  Leader Board  ";
     cout << bold_on;
@@ -226,7 +288,12 @@ void display_leaderboard(vector<string> leader_board) {
     cout << def;
 }
 
-//Function to clear the screen
+/*
+    (clear_screen) := This function is used to clear the screen
+    Inputs: void
+    Outputs: void
+    Purpose: This function clears the screen
+*/
 void clear_screen() {
     system("clear");
 }

@@ -9,15 +9,15 @@
 using namespace std;
 
 /*
-  (save_game) := Function to save game
-  Inputs: (i) 2D vector of current board, (ii) int containing score, (iii) string containing username (all are passed by value)
-  Outputs: does not return anything
-  Purpose: (i) saves the current game to loadgame.txt file
-  Logic:
-  first checks if the user already has a saved game
-  if it does, overwrites the existing saved game with the new board passed into the function
-  if does not have already saved game, appends it to the end of file
-  saves all the information as <username><space><size><space><score><board values seperated by space>
+    (save_game) := Function to save game
+    Inputs: (i) 2D vector of current board, (ii) int containing score, (iii) string containing username (all are passed by value)
+    Outputs: does not return anything
+    Purpose: (i) saves the current game to loadgame.txt file
+    Logic:
+    first checks if the user already has a saved game
+    if it does, overwrites the existing saved game with the new board passed into the function
+    if does not have already saved game, appends it to the end of file
+    saves all the information as <username><space><size><space><score><board values seperated by space>
 */
 void save_game(vector<vector<int>> board, int score, string username) {
     ifstream fin;
@@ -103,14 +103,14 @@ void save_game(vector<vector<int>> board, int score, string username) {
 }
 
 /*
-  (load_game) := Function to load game
-  Inputs: (i) int containing score, (ii) string containing username (all are passed by value)
-  Outputs: returns a 2D vector of int containing the loaded game board
-  Purpose: load a saved game from loadgame.txt file
-  Logic:
-  first checks if the user already has a saved game
-  if it does, extracts the board from the file and returns it
-  if does not have already saved game, returns an empty board
+    (load_game) := Function to load game
+    Inputs: (i) int containing score, (ii) string containing username (all are passed by value)
+    Outputs: returns a 2D vector of int containing the loaded game board
+    Purpose: load a saved game from loadgame.txt file
+    Logic:
+    first checks if the user already has a saved game
+    if it does, extracts the board from the file and returns it
+    if does not have already saved game, returns an empty board
 */
 vector<vector<int>> load_game(string username, int &score) {
     //create a 2D vector of int to store board
@@ -182,14 +182,14 @@ vector<vector<int>> load_game(string username, int &score) {
 }
 
 /*
-  (leaderboard) := Function to display leaderboard
-  Inputs: none
-  Outputs: none
-  Purpose: to display the leaderboard
-  Logic:
-  first gets the leaderboard from the file
-  then sorts the leaderboard in descending order
-  then displays the leaderboard
+    (leaderboard) := Function to display leaderboard
+    Inputs: none
+    Outputs: none
+    Purpose: to display the leaderboard
+    Logic:
+    first gets the leaderboard from the file
+    then sorts the leaderboard in descending order
+    then displays the leaderboard
 */
 bool sort_scores(const string& a, const string& b) {
     //finding scores in line and converting it to string
@@ -200,14 +200,14 @@ bool sort_scores(const string& a, const string& b) {
 }
 
 /*
-  (leaderboard) := Function to display leaderboard
-  Inputs: none
-  Outputs: none
-  Purpose: to display the leaderboard
-  Logic:
-  first gets the leaderboard from the file
-  then sorts the leaderboard in descending order
-  then displays the leaderboard
+    (leaderboard) := Function to display leaderboard
+    Inputs: none
+    Outputs: none
+    Purpose: to display the leaderboard
+    Logic:
+        first gets the leaderboard from the file
+        then sorts the leaderboard in descending order
+        then displays the leaderboard
 */
 vector<string> get_leaderboard(){
     //opening the leaderboard file

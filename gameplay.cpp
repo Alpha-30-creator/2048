@@ -7,9 +7,11 @@
 
 using namespace std;
 
-// Function to initialize the board
-// Inputs: integer size of the board & 2D vector for board (PASS-BY-REFERENCE).
-// Outputs: Modifies the board within the function.
+/*
+    Function to initialize the board
+    Inputs: integer size of the board & 2D vector for board (PASS-BY-REFERENCE).
+    Outputs: Modifies the board within the function.
+*/
 void initialize_board(int size, vector<vector<int>> &board) {
     
     // Resize the board with the given size and initialize its elements with 0(empty positions)
@@ -40,22 +42,26 @@ void initialize_board(int size, vector<vector<int>> &board) {
     }
 }
 
-// Function to calculate the score of the board after a move.
-// INPUTS: The move made by the user, the current score (PASS-BY-REFERENCE), the size of the board, 2D vector board
-// OUTPUTS: Modifies the score within the function.
+/*
+    Function to calculate the score of the board after a move.
+    INPUTS: The move made by the user, the current score (PASS-BY-REFERENCE), the size of the board, 2D vector board
+    OUTPUTS: Modifies the score within the function.
+*/
 void calculate_score(char move, int &score, int size, vector<vector<int>> &board) {
     int temp = 0;
     
-    // For score calculation, four directions need to considered: up, down, left and right.
-    
-    // *Explanation of logic*
-    // If move is in left direction, then we must loop through each element of the board from left to right(similar logic for rest of directions).
-    //temp variable will represent value of the previous tile.
-    //it will be set to 0 for each row
-    //if the current element of the board isn't equal to temp and the value of current element isn't 0. Tiles are not a match, temp set to current element.
-    //if temp is equal to current element, tiles are a match and we add their sum to the score
-    //similar steps for each direction with difference in the manner in which we loop through the board.
-    
+    /*  
+        For score calculation, four directions need to considered: up, down, left and right.
+        
+        *Explanation of logic*
+        If move is in left direction, then we must loop through each element of the board from left to right(similar logic for rest of directions).
+        temp variable will represent value of the previous tile.
+        it will be set to 0 for each row
+        if the current element of the board isn't equal to temp and the value of current element isn't 0. Tiles are not a match, temp set to current element.
+        if temp is equal to current element, tiles are a match and we add their sum to the score
+        similar steps for each direction with difference in the manner in which we loop through the board.
+    */
+        
     //for left direction
     if (move == 'a') {
         // search through board row by row from left to right
@@ -122,9 +128,11 @@ void calculate_score(char move, int &score, int size, vector<vector<int>> &board
     }
 }
 
-// Function to generate a random 2-tile after every move is done.
-// Inputs: (i) integer size of the board, (ii) 2D vector of the current board as "pass-by-reference".
-// Outputs: Nothing. It modifies the board within the function.
+/*
+    Function to generate a random 2-tile after every move is done.
+    Inputs: (i) integer size of the board, (ii) 2D vector of the current board as "pass-by-reference".
+    Outputs: Nothing. It modifies the board within the function.
+*/
 void generate_random_tile(int size, vector<vector<int>> &board) {
     // Create a vector containing pairs of coordinates (i, j) of currently empty tiles
     vector<pair<int, int>> empty_tiles;
@@ -152,10 +160,11 @@ void generate_random_tile(int size, vector<vector<int>> &board) {
     }
 }
 
-
-// (check_finish) := Function to check if the game has finished.
-// Inputs: (i) integer size of the board, (ii) 2D vector for the current state of board.
-// Outputs: A boolean value indicating if the game is finished or not. If finished, return true. If not, return false.
+/*
+    Function to check if the game has finished.
+    Inputs: (i) integer size of the board, (ii) 2D vector for the current state of board.
+    Outputs: A boolean value indicating if the game is finished or not. If finished, return true. If not, return false.
+*/
 bool check_finish(int size, vector<vector<int>> board) {
 
     // Check if board is full by checking if any tile is 0.
@@ -234,12 +243,11 @@ bool check_finish(int size, vector<vector<int>> board) {
 
 
 /*
-	moves all the tiles to left, right, down, or up
-	board - 2d vector that stores the game board
+	Inputs:
+	board - 2d vector that stores the game board (PASS-BY-REFERENCE)
 	size - the dimension of the game board
 	dir - direction of the move ('w', 'a', 's', 'd')
-	
-	makes changes to the 2d vector directly
+	Outputs: makes changes to the 2d vector directly
 */
 	
 void move(vector<vector<int>> &board, int size, char dir) {

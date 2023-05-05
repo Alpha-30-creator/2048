@@ -8,13 +8,16 @@
 
 using namespace std;
 
-//function to save a game in the file "leaderboard.txt"
-//takes the game board, score and username as parameters
+
+//(save_game) := Function to save game
+//Inputs: (i) 2D vector of current board, (ii) int containing score, (iii) string containing username (all are passed by value)
+//Outputs: does not return anything
+//Purpose: (i) saves the current game to loadgame.txt file
+//Logic:
 //first checks if the user already has a saved game
 //if it does, overwrites the existing saved game with the new board passed into the function
 //if does not have already saved game, appends it to the end of file
 //saves all the information as <username><space><size><space><score><board values seperated by space>
-
 void save_game(vector<vector<int>> board, int score, string username) {
     ifstream fin;
     //vector to store saved games of all users from loadgame.txt
@@ -47,7 +50,7 @@ void save_game(vector<vector<int>> board, int score, string username) {
         fout.open("loadgame.txt");
         //covert username to lowercase
         string saved_game = username + " " + to_string(board.size()) + " " + to_string(score) + " ";
-        for(int j = 0;j < board.size(); j++){
+        for(int j = 0; j < board.size(); j++){
             for(int k = 0;k < board.size(); k++){
                 saved_game = saved_game + to_string(board[j][k])+" ";    
             }
@@ -61,8 +64,8 @@ void save_game(vector<vector<int>> board, int score, string username) {
     if (user_found == true) {
         saved_games[i] = username + " " + to_string(board.size()) + " " + to_string(score) + " ";
         //modify the saved game by overwriting the existing saved game with the new saved game
-        for(int j = 0;j < board.size(); j++){
-            for(int k = 0;k < board.size(); k++){
+        for(int j = 0; j < board.size(); j++){
+            for(int k = 0; k < board.size(); k++){
                 saved_games[i] = saved_games[i] + to_string(board[j][k])+" ";    
             }
         }
@@ -91,14 +94,21 @@ void save_game(vector<vector<int>> board, int score, string username) {
         //write the modified information in the specified format if file opens
         for(int j = 0; j < saved_games.size(); j++){
             fout<<saved_games[j]<<endl;
-            }
+        }
         fout.close();
         
         cout<<"Game saved successfully!"<<endl;
     }
 }
 
-//Function to load a saved game
+//(load_game) := Function to load game
+//Inputs: (i) int containing score, (ii) string containing username (all are passed by value)
+//Outputs: returns a 2D vector of int containing the loaded game board
+//Purpose: load a saved game from loadgame.txt file
+//Logic:
+//first checks if the user already has a saved game
+//if it does, extracts the board from the file and returns it
+//if does not have already saved game, returns an empty board
 vector<vector<int>> load_game(string username, int &score) {
     //create a 2D vector of int to store board
     vector<vector<int>> board;
@@ -168,7 +178,13 @@ vector<vector<int>> load_game(string username, int &score) {
     }
 }
 
-//function for sorting the leaderboard file in terms of score
+//(sort_scores) := Function to sort scores in descending order
+//Inputs: (i) and (ii) string containing a line from leaderboard file (all are passed by value)
+//outputs: returns a bool value
+//Purpose: to sort scores in descending order
+//Logic:
+//extracts scores from line and converts it to int
+//returns true or false depending on if previous value is greater
 bool sort_scores(const string& a, const string& b) {
     //finding scores in line and converting it to string
     int score_a = stoi(a.substr(a.find_last_of(" ") + 1));
@@ -177,7 +193,14 @@ bool sort_scores(const string& a, const string& b) {
     return score_a > score_b;
 }
 
-//function for extracting leaderboard from leaderboard file
+//(get_leaderboard) := Function to get leaderboard
+//Inputs: none
+//Outputs: returns a vector of string containing the leaderboard
+//Purpose: to get the leaderboard from the file
+//Logic:
+//opens the file and reads each line
+//stores each line in a vector
+//returns the vector
 vector<string> get_leaderboard(){
     //opening the leaderboard file
     ifstream fin;
@@ -209,10 +232,14 @@ vector<string> get_leaderboard(){
     return scores;
 }
 
-//function for adding new scores in the leaderboard file and sorting it in terms of score
-//takes score and username as a parameter, saves it in the format <username><space><score>
-//sorts it using the sort function of STL
-
+//(update_leaderboard) := Function to update leaderboard
+//Inputs: (i) int containing score, (ii) string containing username (all are passed by value)
+//Outputs: returns a bool value
+//Purpose: to update the leaderboard
+//Logic:
+//first checks if the user has beaten his previous high score
+//if yes, updates the leaderboard
+//if no, does not update the leaderboard
 bool update_leaderboard(int score, string username) {
     //read the current leaderboard from the file
     vector<string> leaderboard = get_leaderboard();

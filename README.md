@@ -2,9 +2,10 @@
 
 ## Identification of team members:
 Abdurrahman Saad - 
-Zuhayr Abdullazhanov - 3036056732
-Shah Jahan Ishaq - 3036095180
 Hannan Javed -
+Shah Jahan Ishaq - 3036095180
+Yerdaulet Mussabek - 
+Zuhayr Abdullazhanov - 3036056732
 
 ## Text-Based 2048 Game
 This is a simple implementation of the popular 2048 game in C++, without any external libraries. The game is played on a text-based grid, with the player using arrow keys to move numbered tiles around the board and combine them. The goal is to reach the highest numbered tile possible, with a maximum value of 2048.

@@ -194,9 +194,11 @@ int main() {
 				menu();
 
 				continue;
+			} else {
+				board.clear(); score = 0;
+				menu();
+				continue;
 			}
-
-			else menu();
 		}
 
 		char dir;

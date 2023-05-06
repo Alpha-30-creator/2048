@@ -2,7 +2,7 @@
 This is a simple implementation of the popular 2048 game in C++, without any external libraries.
 
 ## Table of Contents
-1. [Identification of team members](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#team-members)
+1. [Team members](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#team-members)
 2. [Game rules](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#game-rules)
 3. [Getting started](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#getting-started)
 4. [Gameplay features](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#gameplay-features)

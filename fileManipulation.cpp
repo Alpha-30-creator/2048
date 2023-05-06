@@ -36,7 +36,8 @@ void save_game(vector<vector<int>> board, int score, string username) {
         //read until end of file
         while(getline(fin, line)){
             saved_games.push_back(line);
-        }  else {
+        }  
+    } else {
         //if file does not open, write current game to file and exit
         fin.close();
         ofstream fout;
@@ -59,8 +60,7 @@ void save_game(vector<vector<int>> board, int score, string username) {
                 user_found = true;
                 break;
             }
-        }
-    } 
+        } 
 
     //if condition to check if user already has a saved game
     if (user_found == true) {

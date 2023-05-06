@@ -20,8 +20,8 @@ The player can continue playing the game and merging tiles until there are no mo
 We hope you enjoy playing this text-based version of 2048!
 
 ## Compiling the game
-To compile the game, simply run the command `_make_` in the command prompt. Then to run the game, type ./main and press enter. The game will be started!
-If you want to start over with a clean slate, you can enter the command `_make clean_` to remove any previously compiled files.
+To compile the game, simply run the command _`make`_ in the command prompt. Then to run the game, type `./main` and press enter. The game will be started!
+If you want to start over with a clean slate, you can enter the command _`make clean`_ to remove any previously compiled files.
 ## The main menu
 After the game is compiled and executed, it asks the user to enter the username. After that, the main menu is displayed with four options:
 1. New game
@@ -60,7 +60,9 @@ The game uses a 2D vector from the standard template library of C++ that contain
 ## Dynamic Memory Management
 When the game is started, dynamic memory allocation is used to create the 2D vector that represents the game board. The size of the vector is determined by the user's choice of difficulty level, and it can be either 3x3, 4x4, or 5x5. This allocation of memory allows for the efficient use of resources, as the size of the vector is not statically defined, and it can be changed at runtime based on the user's input.
 ## Generating Random Tiles
-The `generate_random_tile` function generates a random tile of value 2 in an empty cell on the board after every successful move. The function first creates a vector of empty cells, selects a random empty cell, and assigns a value of 2 to that cell. This completes the requirement of generating a random game set.\
+The `generate_random_tile` function generates a random tile of value 2 in an empty cell on the board after every successful move. The function first creates a vector of empty cells, selects a random empty cell, and assigns a value of 2 to that cell. This completes the requirement of generating a random game set.
+## Instant Input
+To make a move, the player does not have to press enter every time. Instead, the key pressed is already registered and the move is made instantly. By allowing the player to move the tiles instantly without having to press enter after each move, the game becomes more fluid and responsive. The implementation of this feature also accounts for different platforms through conditional compiling, ensuring that the game runs smoothly regardless of the platform it is being played on.
 ## User Input Validation
 Throughout the game, user input is validated to ensure that the player enters only valid moves, menu options, and difficulty levels. This validation is implemented at every stage of the game and ensures that the game runs smoothly and that the player only enters valid inputs. By validating user input, errors and unexpected behavior are prevented, providing a more enjoyable and user-friendly experience.
 ## Reset Game

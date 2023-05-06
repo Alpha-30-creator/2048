@@ -1,36 +1,35 @@
 # 2048+ // Group # 63
-#Table of Contents
-_ Text Based 2048 Game
-Game Rules
-Gameplay Features
-Implementation Details
-Coding Features
+## Text-Based 2048 Game
+This is a simple implementation of the popular 2048 game in C++, without any external libraries. The game is played on a text-based grid, with the player using the wasd keys to move numbered tiles around the board and combine them. The goal is to reach the highest score by combining the same valued tiles!
+
 ## Identification of team members:
+
 | Member Name | University ID |
 | --- | --- |
 | Abdurrahman Saad | 3036094344 | 
 | Hannan Javed | 3036094320 |
 | Shah Jahan Ishaq | 3036095180 |
 | Yerdaulet Mussabek | 3036087157 |
-| Zuhayr Abdullazhanov | 3036056732|
+| Zuhayr Abdullazhanov | 3036056732 |
 
-## Text-Based 2048 Game
-This is a simple implementation of the popular 2048 game in C++, without any external libraries. The game is played on a text-based grid, with the player using the wasd keys to move numbered tiles around the board and combine them. The goal is to reach the highest score by combining the same valued tiles!
+# Table of Contents
+- Game rules
+- Getting started
+- Gameplay features
+- Implementation details
+- Coding features and functions
 
-## Game Rules
 
-### Controls
-The player uses the wasd keys (up, down, left, right) to control the movement of all the tiles on the board in one direction. The control mechanism is intuitive and easy to use, allowing players to focus on the strategy of the game.
+## Game rules
 
 ### Goal
 The goal of the game is to merge tiles and achieve the highest score possible. When the board is completely filled with tiles and there are no more valid moves, the game is over. This provides a clear objective for players and encourages them to strategize and plan their moves carefully.
-
+### Controls
+The player uses the wasd keys (up, down, left, right) to control the movement of all the tiles on the board in one direction. The control mechanism is intuitive and easy to use, allowing players to focus on the strategy of the game.
 ### Game Mechanics
 When two tiles with the same value collide, they merge into a new tile with a value equal to their sum. The player's score increases with each merge, incentivizing them to merge as many tiles as possible and reach a higher score. The game mechanics are simple yet challenging, providing a satisfying gameplay experience.
 
-With its straightforward gameplay mechanics and clear rules, this implementation of the 2048 game is easy to learn but difficult to master. So why wait? Start playing now and see how high you can score!
-
-## Difficulty Levels
+### Difficulty levels
 This implementation of 2048 includes three levels of difficulty:
 
 - **Easy: 5x5 grid**
@@ -39,20 +38,24 @@ This implementation of 2048 includes three levels of difficulty:
 
 The smaller grids provide more challenge and require more strategic thinking to achieve a high score.
 
-## Running the game
+## Getting started
 ### Compilation
-To compile the game, simply run the command `make` in the command prompt. Then to run the game, type `./main` and press enter. The game will be started!
-If you want to start over with a clean slate, you can enter the command `make clean` to remove any previously compiled files.
-### The main menu
-After the game is compiled and executed, it asks the user to enter the username. After that, the main menu is displayed with four options:
+To get started with the text-based implementation of the popular 2048 game, simply run the command `make` in the command prompt to compile the game. Once compiled, run the game by typing `./main` and pressing enter.
+
+### Main menu
+After the game is executed, it will prompt the user to enter a username. Once the username is entered, the main menu will be displayed with four options:
+
 1. New Game
-   - This will ask the user to enter the difficulty level. It will then initialize the board with the size accordingly and start a new game.
-2. Load game
-   - This is used to load any previously saved game (if the user has any) and initialize the board with the values. It will output no saved games if the user does not have any saved game.
-3. Instructions
-   - This will print the instructions of the game.
-4. Quit game
-   - To quit the game
+    - This option will ask the user to enter the difficulty level and initialize the board with the appropriate size. The game will then begin.
+2. Load Game
+    - This option allows the user to load any previously saved game by initializing the board with the saved values. If the user has no saved games, the option will display a message indicating that there are no saved games.
+3. Instructions 
+    - This option will print the instructions of the game.
+4. Quit Game
+    - This option allows the user to quit the game.
+
+### Cleaning up
+To start over with a clean slate, the user can enter the command make clean to remove any previously compiled files.
 
 ## Gameplay features
 In addition to the basic rules of the 2048 game, this implementation of the text-based 2048 game includes several features that enhance the gameplay experience:

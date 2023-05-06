@@ -1,13 +1,13 @@
 # 2048+ // Group # 63
 
 ## Table of Contents
-1. Text-based 2048 game
-2. Identification of team members
-3. Game rules
-4. Getting started
-5. Gameplay features
-6. Implementation details
-7. Coding features and functions
+1. [Text-based 2048 game](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#text-based-2048-game)
+2. [Identification of team members](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#identification-of-team-members)
+3. [Game rules](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#game-rules)
+4. [Getting started](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#getting-started)
+5. [Gameplay features](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#gameplay-features)
+6. [Implementation details](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#implementation-details)
+7. [Coding features and functions](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#coding-features-and-functions)
 
 
 ## Text-based 2048 game

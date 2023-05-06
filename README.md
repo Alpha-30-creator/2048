@@ -12,7 +12,7 @@ This is a simple implementation of the popular 2048 game in C++, without any ext
 | Yerdaulet Mussabek | 3036087157 |
 | Zuhayr Abdullazhanov | 3036056732 |
 
-# Table of Contents
+## Table of Contents
 1. Game rules
 2. Getting started
 3. Gameplay features

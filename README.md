@@ -1,4 +1,4 @@
-# 2048+ // Group # 63
+# 2048++ // Group # 63
 This is a simple implementation of the popular 2048 game in C++, without any external libraries.
 
 ## Table of Contents
@@ -101,7 +101,7 @@ When the game is started, dynamic memory allocation is used to create the 2D vec
 ### Generating Random Tiles
 The `generate_random_tile` function generates a random tile of value 2 in an empty cell on the board after every successful move. The function first creates a vector of empty cells, selects a random empty cell, and assigns a value of 2 to that cell. This completes the requirement of generating a random game set.
 ### Updating the Leaderboard
-Th leaderboard file contains the top ten scores with username and is sorted in terms of descending order of score, so the top score is the first line of the file and so on. The `update_leaderboard` function is responsible for updating the leaderboard after each game. It takes the player's score and the username as input, and updates the leaderboard file with the new score if it is among the top ten scores. It reads scores from the file and decides to update it based on the condition specified. 
+The leaderboard file contains the top ten scores with username and is sorted in terms of descending order of score, so the top score is the first line of the file and so on. The `update_leaderboard` function is responsible for updating the leaderboard after each game. It takes the player's score and the username as input, and updates the leaderboard file with the new score if it is among the top ten scores. It reads scores from the file and decides to update it based on the condition specified. 
 ### Saving the game
 The `save_game` function allows the player to save the current state of the game and resume playing later. It takes the current state of the board, the current score, and the username as input, and writes them to the file named loadgame.txt. It saves it in the format <username><space><size><space><score><board values seperated by space>. It can save game of multiple users with different usernames.
 Moreover it checks if the user already had a previous saved game, and overwrites the previous game board values with the new values if it is the case, otherwise it appends the game status to the end of the file. This completes the requirement for having file input/output for saving game status.

@@ -1,5 +1,5 @@
 # 2048+ // Group # 63
-This is a simple implementation of the popular 2048 game in C++, without any external libraries. The game is played on a text-based grid, with the player using the wasd keys to move numbered tiles around the board and combine them. The goal is to reach the highest score by combining the same valued tiles!
+This is a simple implementation of the popular 2048 game in C++, without any external libraries.
 
 ## Table of Contents
 1. [Identification of team members](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#identification-of-team-members)

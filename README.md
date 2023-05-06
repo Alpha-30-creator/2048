@@ -1,5 +1,16 @@
 # 2048+ // Group # 63
-## Text-Based 2048 Game
+
+## Table of Contents
+1. Text-based 2048 game
+2. Identification of team members
+3. Game rules
+4. Getting started
+5. Gameplay features
+6. Implementation details
+7. Coding features and functions
+
+
+## Text-based 2048 game
 This is a simple implementation of the popular 2048 game in C++, without any external libraries. The game is played on a text-based grid, with the player using the wasd keys to move numbered tiles around the board and combine them. The goal is to reach the highest score by combining the same valued tiles!
 
 ## Identification of team members:
@@ -11,13 +22,6 @@ This is a simple implementation of the popular 2048 game in C++, without any ext
 | Shah Jahan Ishaq | 3036095180 |
 | Yerdaulet Mussabek | 3036087157 |
 | Zuhayr Abdullazhanov | 3036056732 |
-
-## Table of Contents
-1. Game rules
-2. Getting started
-3. Gameplay features
-4. Implementation details
-5. Coding features and functions
 
 
 ## Game rules

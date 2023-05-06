@@ -42,8 +42,8 @@ After the game is compiled and executed, it asks the user to enter the username.
    - This will print the instructions of the game.
 4. Quit game
    - To quit the game
-## Starting a new game
-After the user enters 1 and then enters the difficulty level a new game will be started, and the following functions will run:
+## Implementation details
+The game is implemented using these key functions:
 
 ### Initializing the Board
 The `initialize_board` function sets up the game board with a given size and populates it with two random tiles of numeric value 2. It does so by using a nested for loop and a random number generator to place the tiles randomly on the board.
@@ -57,27 +57,36 @@ The `calculate_score` is called after the move function if the check finish retu
 The `check_finish` function checks if the game is over. It returns true if the board is full and there are no possible combinations left on the board. The function iterates over the board twice, once horizontally and once vertically, using a sliding window approach to check for valid combinations of adjacent cells that add up to twice the value of a single cell.
 ### Leaderboard
 After completing a game, the player's score is added to a leaderboard. The `display_leaderboard` function displays the top ten scores (for all levels), allowing players to compete against each other for the highest score. The leaderboard is stored locally and persists between game sessions.
+
+## Gameplay features
+In addition to the basic rules of the 2048 game, this implementation of the text-based 2048 game includes several features that enhance the gameplay experience:
+Enhanced Gameplay Features
+
+### Instant Input
+To make the gameplay experience more responsive and fluid, the game has an instant input feature that eliminates the need for players to press enter after each move. With this feature, players can make moves quickly and efficiently, keeping the game's momentum going.
+### User Input Validation
+To ensure that players only enter valid moves, menu options, and difficulty levels, the game has a user input validation feature. This feature checks for input errors throughout the game, preventing unexpected behaviors and making the game more enjoyable and user-friendly.
+### Reset Game
+To enable players to start over at any point in the game, the game has a reset feature. By pressing the "r" key, players can reset the game board to its initial state. A confirmation message is displayed, asking players to confirm whether they want to proceed with the reset. This feature provides a more user-friendly experience and enables players to restart the game at any stage.
+### Quit the Game
+To allow players to exit the game quickly and easily, the game has a quit feature. By pressing the "q" key, players can end the game immediately. This feature is useful in situations where players need to attend to something else and don't want to lose their progress.
+### Beat High Score
+To add an extra level of challenge to the game, the game has a feature that checks if the player has beaten their previous high score. If the player's score is higher than their previous high score, they are notified of their achievement. This feature encourages players to push themselves and achieve their personal best.
+
+These enhanced gameplay features make the game more responsive, user-friendly, and challenging. They demonstrate the developer's commitment to providing a high-quality gaming experience for players.
 ## Coding features and functions
+To create a robust and efficient implementation of the text-based 2048 game, this game has incorporates several coding features and functions that enhance the game's functionality and performance:
 ### Use of Standard Template Library
 The game uses a 2D vector from the standard template library of C++ that contains the main status of the game board when it is started after choosing the difficulty level. This data structure is used for storing the game status.
 ### Dynamic Memory Management
 When the game is started, dynamic memory allocation is used to create the 2D vector that represents the game board. The size of the vector is determined by the user's choice of difficulty level, and it can be either 3x3, 4x4, or 5x5. This allocation of memory allows for the efficient use of resources, as the size of the vector is not statically defined, and it can be changed at runtime based on the user's input.
 ### Generating Random Tiles
 The `generate_random_tile` function generates a random tile of value 2 in an empty cell on the board after every successful move. The function first creates a vector of empty cells, selects a random empty cell, and assigns a value of 2 to that cell. This completes the requirement of generating a random game set.
-### Instant Input
-To make a move, the player does not have to press enter every time. Instead, the key pressed is already registered and the move is made instantly. By allowing the player to move the tiles instantly without having to press enter after each move, the game becomes more fluid and responsive. The implementation of this feature also accounts for different platforms through conditional compiling, ensuring that the game runs smoothly regardless of the platform it is being played on.
-### User Input Validation
-Throughout the game, user input is validated to ensure that the player enters only valid moves, menu options, and difficulty levels. This validation is implemented at every stage of the game and ensures that the game runs smoothly and that the player only enters valid inputs. By validating user input, errors and unexpected behavior are prevented, providing a more enjoyable and user-friendly experience.
-### Reset Game
-Our game includes a reset feature that allows the user to reset the game board at any stage of the game. To reset the board, the user "r" key. This will prompt a confirmation message asking if you are sure you want to reset the game. The board can be resetted to its initial state by pressing "1". If "r" was pressed accidentally, "2" can be pressed to not proceed with the reset. This feature provides a more user-friendly experience and enable the user to restart the game at any stage of the game.
-### Quit the Game
-In this implementation of the text-based 2048 game, the player has the ability to quit the game at any time by simply pressing the "q" key. This is a useful feature that allows the player to exit the game quickly if they need to attend to something else.
 ### Updating the Leaderboard
 Th leaderboard file contains the top ten scores with username and is sorted in terms of descending order of score, so the top score is the first line of the file and so on. The `update_leaderboard` function is responsible for updating the leaderboard after each game. It takes the player's score and the username as input, and updates the leaderboard file with the new score if it is among the top ten scores. It reads scores from the file and decides to update it based on the condition specified. 
-### Beat High score
-An additional feature implemented in the `update_leaderboard` function is to check if the user has beaten his previous high score. It checks if the current user already has a high score in the leaderboard, and if the new score is greater than the high score, it returns a true indiciating that the user has beaten his old high score, otherwise it will return false. This function uses file manipulation commands to read and write to the leaderboard file, ensuring that the leaderboard is updated accurately and reliably.
 ### Saving the game
-The `save_game` function allows the player to save the current state of the game and resume playing later. It takes the current state of the board, the current score, and the username as input, and writes them to the file named loadgame.txt. It saves it in the format <username><space><size><space><score><board values seperated by space>. Moreover it checks if the user already had a previous saved game, and overwrites the previous game board values with the new values if it is the case, otherwise it appends the game status to the end of the file. This completes the requirement for having file input/output for saving game status.
+The `save_game` function allows the player to save the current state of the game and resume playing later. It takes the current state of the board, the current score, and the username as input, and writes them to the file named loadgame.txt. It saves it in the format <username><space><size><space><score><board values seperated by space>. It can save game of multiple users with different usernames.
+Moreover it checks if the user already had a previous saved game, and overwrites the previous game board values with the new values if it is the case, otherwise it appends the game status to the end of the file. This completes the requirement for having file input/output for saving game status.
 ### Loading the Game
 The `load_game` function allows the player to resume playing a previously saved game. It reads the saved game file and reconstructs the game state, score, and level of difficulty, allowing the player to continue playing from where they left off. It takes the username and score (score passed by reference) as an input, and loops through all the lines in the file loadgame.txt to check if the user has a saved game. If it does it creates a new 2D vector board and saves the old game values to it and return it, otherwise outputs that the user has no saved game and exits.
 ### Multiple Source Code Files

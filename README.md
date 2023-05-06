@@ -20,15 +20,15 @@ The player can continue playing the game and merging tiles until there are no mo
 We hope you enjoy playing this text-based version of 2048!
 
 ## Compiling the game
-To compile the game, simply run the command *`make`* in the command prompt. Then to run the game, type `./main` and press enter. The game will be started!
-If you want to start over with a clean slate, you can enter the command _`make clean`_ to remove any previously compiled files.
+To compile the game, simply run the command `make` in the command prompt. Then to run the game, type `./main` and press enter. The game will be started!
+If you want to start over with a clean slate, you can enter the command `make clean` to remove any previously compiled files.
 ## The main menu
 After the game is compiled and executed, it asks the user to enter the username. After that, the main menu is displayed with four options:
 1. New game
-2. Load game
-3. Instruction
-4. Quit game
-The New game will initialize the board and start a new game.
+- The New game will initialize the board and start a new game.
+3. Load game
+4. Instruction
+5. Quit game
 The Load game is to load any previously saved game (if the user has any) and initialize the board with the values. It will output no saved games if the user does not have any saved game.
 Instruction will print the instructions of the game
 Quit game is used to exit the game

@@ -1,10 +1,10 @@
 # 2048 Plus // Group # 63
 
 ## Identification of team members:
-Abdurrahman Saad - 3036094344
-Hannan Javed - 3036094320
-Shah Jahan Ishaq - 3036095180
-Yerdaulet Mussabek - 3036087157
+Abdurrahman Saad - 3036094344 | 
+Hannan Javed - 3036094320 |
+Shah Jahan Ishaq - 3036095180 |
+Yerdaulet Mussabek - 3036087157 |
 Zuhayr Abdullazhanov - 3036056732
 
 ## Text-Based 2048 Game

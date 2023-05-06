@@ -20,7 +20,7 @@ The player can continue playing the game and merging tiles until there are no mo
 We hope you enjoy playing this text-based version of 2048!
 
 ## Compiling the game
-To compile the game, simply run the command _`make`_ in the command prompt. Then to run the game, type `./main` and press enter. The game will be started!
+To compile the game, simply run the command *`make`* in the command prompt. Then to run the game, type `./main` and press enter. The game will be started!
 If you want to start over with a clean slate, you can enter the command _`make clean`_ to remove any previously compiled files.
 ## The main menu
 After the game is compiled and executed, it asks the user to enter the username. After that, the main menu is displayed with four options:

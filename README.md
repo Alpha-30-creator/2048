@@ -1,4 +1,4 @@
-# 2048 Plus // Group # 63
+# 2048+ // Group # 63
 
 ## Identification of team members:
 Abdurrahman Saad - 3036094344 | 

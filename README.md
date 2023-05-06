@@ -13,11 +13,11 @@ This is a simple implementation of the popular 2048 game in C++, without any ext
 | Zuhayr Abdullazhanov | 3036056732 |
 
 # Table of Contents
-- Game rules
-- Getting started
-- Gameplay features
-- Implementation details
-- Coding features and functions
+1. Game rules
+2. Getting started
+3. Gameplay features
+4. Implementation details
+5. Coding features and functions
 
 
 ## Game rules
@@ -39,6 +39,7 @@ This implementation of 2048 includes three levels of difficulty:
 The smaller grids provide more challenge and require more strategic thinking to achieve a high score.
 
 ## Getting started
+
 ### Compilation
 To get started with the text-based implementation of the popular 2048 game, simply run the command `make` in the command prompt to compile the game. Once compiled, run the game by typing `./main` and pressing enter.
 
@@ -91,6 +92,7 @@ After completing a game, the player's score is added to a leaderboard. The `disp
 
 ## Coding features and functions
 To create a robust and efficient implementation of the text-based 2048 game, this game has incorporates several coding features and functions that enhance the game's functionality and performance:
+
 ### Use of Standard Template Library
 The game uses a 2D vector from the standard template library of C++ that contains the main status of the game board when it is started after choosing the difficulty level. This data structure is used for storing the game status.
 ### Dynamic Memory Management

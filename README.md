@@ -67,12 +67,11 @@ To make the gameplay experience more responsive and fluid, the game has an insta
 To ensure that players only enter valid moves, menu options, and difficulty levels, the game has a user input validation feature. This feature checks for input errors throughout the game, preventing unexpected behaviors and making the game more enjoyable and user-friendly.
 ### Reset Game
 To enable players to start over at any point in the game, the game has a reset feature. By pressing the "r" key, players can reset the game board to its initial state. A confirmation message is displayed, asking players to confirm whether they want to proceed with the reset. This feature provides a more user-friendly experience and enables players to restart the game at any stage.
-### Quit the Game
-To allow players to exit the game quickly and easily, the game has a quit feature. By pressing the "q" key, players can end the game immediately. This feature is useful in situations where players need to attend to something else and don't want to lose their progress.
 ### Beat High Score
 To add an extra level of challenge to the game, the game has a feature that checks if the player has beaten their previous high score. If the player's score is higher than their previous high score, they are notified of their achievement. This feature encourages players to push themselves and achieve their personal best.
-
-These enhanced gameplay features make the game more responsive, user-friendly, and challenging. They demonstrate the developer's commitment to providing a high-quality gaming experience for players.
+### Quit the Game without loosing Progress
+This implementation of the text-based 2048 game allows players to save their progress and resume playing later. With the ability to save games and load them at a later time, players can enjoy the game at their own pace without fear of losing their progress. The feature also enables multiple users to save their games and compete with friends and family members. 
+To save a game, players can simply press the "q" key. This convenient and user-friendly feature enhances the gameplay experience and demonstrates the developer's commitment to providing a high-quality gaming experience for players.
 ## Coding features and functions
 To create a robust and efficient implementation of the text-based 2048 game, this game has incorporates several coding features and functions that enhance the game's functionality and performance:
 ### Use of Standard Template Library
@@ -88,9 +87,11 @@ The `save_game` function allows the player to save the current state of the game
 Moreover it checks if the user already had a previous saved game, and overwrites the previous game board values with the new values if it is the case, otherwise it appends the game status to the end of the file. This completes the requirement for having file input/output for saving game status.
 ### Loading the Game
 The `load_game` function allows the player to resume playing a previously saved game. It reads the saved game file and reconstructs the game state, score, and level of difficulty, allowing the player to continue playing from where they left off. It takes the username and score (score passed by reference) as an input, and loops through all the lines in the file loadgame.txt to check if the user has a saved game. If it does it creates a new 2D vector board and saves the old game values to it and return it, otherwise outputs that the user has no saved game and exits.
+### Use of Proper Indentation, Naming Styles, and In-Code Documentation
+This implementation of the text-based 2048 game follows standard coding practices to ensure that the code is clean, maintainable, and understandable. Proper indentation and naming conventions make the code easier to read, while in-code documentation provides clarity on the purpose and functionality of each component. By adhering to these best practices, this game has created a high-quality implementation that is bug-free and performs as expected.
 ### Multiple Source Code Files
 This implementation of the text-based 2048 game uses multiple source code files to organize the code into logical and modular units. This completes the requirement of having program code in multiple files.
-### Makefile
+#### Makefile
 The game uses a makefile to automate the compilation and linking process. It specifies the compilation flags and dependencies for each target, allowing us to easily build and run our game with one command. By using a makefile, we ensure that our code is up-to-date and compiled accurately. The makefile also includes rules for cleaning up the project directory, ensuring that the project remains organized and easy to navigate.
-### Header Files
+#### Header Files
 The header files for the game contain function prototypes and other declarations that are used throughout the program. These files are included at the beginning of each source file and provide a way for the compiler to recognize the functions and variables used in the program. By using header files, the code is more organized and modular, making it easier to read and maintain. Additionally, header files allow for the separation of interface and implementation, enabling the program to be easily extended and modified.

@@ -54,6 +54,8 @@ The calculate_score is called after the move function if the check finish return
 The generate_random_tile function generates a random tile of value 2 in an empty cell on the board after every successful move. The function first creates a vector of empty cells, selects a random empty cell, and assigns a value of 2 to that cell.
 ## Checking for Game Over
 The check_finish function checks if the game is over. It returns true if the board is full and there are no possible combinations left on the board. The function iterates over the board twice, once horizontally and once vertically, using a sliding window approach to check for valid combinations of adjacent cells that add up to twice the value of a single cell.
+## Reset Game
+Our game includes a reset feature that allows the user to reset the game board at any stage of the game. To reset the board, the user "r" key. This will prompt a confirmation message asking if you are sure you want to reset the game. The board can be resetted to its initial state by pressing "1". If "r" was pressed accidentally, "2" can be pressed to not proceed with the reset. This feature provides a more user-friendly experience and enable the user to restart the game at any stage of the game.
 ## Coding features and functions
 ## Use of Standard Template Library
 The game uses a 2D vector that contains the main status of the game when it is started after choosing the difficulty level. It's size depends on the user's input and can 3x3, 4x4 or 5x5 depending on the difficulty level.

@@ -52,7 +52,7 @@ void save_game(vector<vector<int>> board, int score, string username) {
         }
         fout << saved_game << endl;
         fout.close();
-        exit(0);
+        return;
     }
         //check is the user already has a saved game by looping through all 
         for(i ; i < saved_games.size(); i++){

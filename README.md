@@ -24,14 +24,14 @@ To compile the game, simply run the command `make` in the command prompt. Then t
 If you want to start over with a clean slate, you can enter the command `make clean` to remove any previously compiled files.
 ## The main menu
 After the game is compiled and executed, it asks the user to enter the username. After that, the main menu is displayed with four options:
-1. New game
-  - This will initialize the board and start a new game.
+1. New Game
+   - This will initialize the board and start a new game.
 2. Load game
-  - This is used to load any previously saved game (if the user has any) and initialize the board with the values. It will output no saved games if the user does not have any saved game.
+   - This is used to load any previously saved game (if the user has any) and initialize the board with the values. It will output no saved games if the user does not have any saved game.
 3. Instruction
-  - This will print the instructions of the game.
+   - This will print the instructions of the game.
 4. Quit game
-  - To quit the game
+   - To quit the game
 ## Starting a new game
 After pressing one for start a new game, the difficulty levels will be printed:
 ## Levels

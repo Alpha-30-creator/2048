@@ -14,11 +14,11 @@ This is a simple implementation of the popular 2048 game in C++, without any ext
 
 | Member Name | University ID |
 | --- | --- |
-| Abdurrahman Saad | 3036094344 | 
-| Muhammad Hannan Javed | 3036094320 |
-| Shah Jahan Ishaq | 3036095180 |
-| Yerdaulet Mussabek | 3036087157 |
-| Zuhayr Abdullazhanov | 3036056732 |
+| SAAD Muhammad Abdurrahman | 3036094344 | 
+| JAVED Muhammad Hannan | 3036094320 |
+| ISHAQ Shah Jahan | 3036095180 |
+| MUSSABEK Yerdaulet | 3036087157 |
+| ABDULLAZHANOV Zuhayr | 3036056732 |
 
 
 ## Game rules

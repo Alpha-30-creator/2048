@@ -19,13 +19,23 @@ The player can continue playing the game and merging tiles until there are no mo
 
 We hope you enjoy playing this text-based version of 2048!
 
-## Compiling the game
+### Difficulty Levels
+This implementation of 2048 includes three levels of difficulty:
+
+- **Easy: 5x5 grid**
+- **Medium: 4x4 grid**
+- **Hard: 3x3 grid**
+
+The smaller grids provide more challenge and require more strategic thinking to achieve a high score.
+
+## Running the game
+### Compilation
 To compile the game, simply run the command `make` in the command prompt. Then to run the game, type `./main` and press enter. The game will be started!
 If you want to start over with a clean slate, you can enter the command `make clean` to remove any previously compiled files.
-## The main menu
+### The main menu
 After the game is compiled and executed, it asks the user to enter the username. After that, the main menu is displayed with four options:
 1. New Game
-   - This will initialize the board and start a new game.
+   - This will ask the user to enter the difficulty level. It will then initialize the board with the size accordingly and start a new game.
 2. Load game
    - This is used to load any previously saved game (if the user has any) and initialize the board with the values. It will output no saved games if the user does not have any saved game.
 3. Instruction
@@ -33,17 +43,8 @@ After the game is compiled and executed, it asks the user to enter the username.
 4. Quit game
    - To quit the game
 ## Starting a new game
-After pressing one for start a new game, the difficulty levels will be printed:
-## Levels
-This implementation of 2048 includes three levels of difficulty:
+After the user enters 1 and then enters the difficulty level a new game will be started, and the following functions will run:
 
-- Easy: 5x5 grid
-- Medium: 4x4 grid
-- Hard: 3x3 grid
-
-The smaller grids provide more challenge and require more strategic thinking to achieve a high score.
-
-## Starting a new game
 ### Initializing the Board
 The `initialize_board` function sets up the game board with a given size and populates it with two random tiles of numeric value 2. It does so by using a nested for loop and a random number generator to place the tiles randomly on the board.
 ### Making a move
@@ -69,6 +70,8 @@ To make a move, the player does not have to press enter every time. Instead, the
 Throughout the game, user input is validated to ensure that the player enters only valid moves, menu options, and difficulty levels. This validation is implemented at every stage of the game and ensures that the game runs smoothly and that the player only enters valid inputs. By validating user input, errors and unexpected behavior are prevented, providing a more enjoyable and user-friendly experience.
 ### Reset Game
 Our game includes a reset feature that allows the user to reset the game board at any stage of the game. To reset the board, the user "r" key. This will prompt a confirmation message asking if you are sure you want to reset the game. The board can be resetted to its initial state by pressing "1". If "r" was pressed accidentally, "2" can be pressed to not proceed with the reset. This feature provides a more user-friendly experience and enable the user to restart the game at any stage of the game.
+### Quit the Game
+In this implementation of the text-based 2048 game, the player has the ability to quit the game at any time by simply pressing the "q" key. This is a useful feature that allows the player to exit the game quickly if they need to attend to something else.
 ### Updating the Leaderboard
 Th leaderboard file contains the top ten scores with username and is sorted in terms of descending order of score, so the top score is the first line of the file and so on. The `update_leaderboard` function is responsible for updating the leaderboard after each game. It takes the player's score and the username as input, and updates the leaderboard file with the new score if it is among the top ten scores. It reads scores from the file and decides to update it based on the condition specified. 
 ### Beat High score

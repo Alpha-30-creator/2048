@@ -25,13 +25,13 @@ If you want to start over with a clean slate, you can enter the command `make cl
 ## The main menu
 After the game is compiled and executed, it asks the user to enter the username. After that, the main menu is displayed with four options:
 1. New game
-- The New game will initialize the board and start a new game.
-3. Load game
-4. Instruction
-5. Quit game
-The Load game is to load any previously saved game (if the user has any) and initialize the board with the values. It will output no saved games if the user does not have any saved game.
-Instruction will print the instructions of the game
-Quit game is used to exit the game
+  - This will initialize the board and start a new game.
+2. Load game
+  - This is used to load any previously saved game (if the user has any) and initialize the board with the values. It will output no saved games if the user does not have any saved game.
+3. Instruction
+  - This will print the instructions of the game.
+4. Quit game
+  - To quit the game
 ## Starting a new game
 After pressing one for start a new game, the difficulty levels will be printed:
 ## Levels

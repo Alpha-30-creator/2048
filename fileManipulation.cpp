@@ -33,6 +33,7 @@ void save_game(vector<vector<int>> board, int score, string username) {
     //if file opens successfully, read all data
     if(!fin.fail()){
         string line;
+        //read until end of file
         while(getline(fin, line)){
             saved_games.push_back(line);
         }
@@ -44,22 +45,6 @@ void save_game(vector<vector<int>> board, int score, string username) {
             }
         }
     } 
-    else {
-        //if file does not open, write current game to file and exit
-        fin.close();
-        ofstream fout;
-        fout.open("loadgame.txt");
-        //covert username to lowercase
-        string saved_game = username + " " + to_string(board.size()) + " " + to_string(score) + " ";
-        for(int j = 0; j < board.size(); j++){
-            for(int k = 0;k < board.size(); k++){
-                saved_game = saved_game + to_string(board[j][k])+" ";    
-            }
-        }
-        fout << saved_game << endl;
-        fout.close();
-        exit(0);
-    }
 
     //if condition to check if user already has a saved game
     if (user_found == true) {

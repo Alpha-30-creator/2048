@@ -1,17 +1,14 @@
 # 2048+ // Group # 63
+This is a simple implementation of the popular 2048 game in C++, without any external libraries. The game is played on a text-based grid, with the player using the wasd keys to move numbered tiles around the board and combine them. The goal is to reach the highest score by combining the same valued tiles!
 
 ## Table of Contents
-1. [Text-based 2048 game](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#text-based-2048-game)
-2. [Identification of team members](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#identification-of-team-members)
-3. [Game rules](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#game-rules)
-4. [Getting started](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#getting-started)
-5. [Gameplay features](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#gameplay-features)
-6. [Implementation details](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#implementation-details)
-7. [Coding features and functions](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#coding-features-and-functions)
+1. [Identification of team members](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#identification-of-team-members)
+2. [Game rules](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#game-rules)
+3. [Getting started](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#getting-started)
+4. [Gameplay features](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#gameplay-features)
+5. [Implementation details](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#implementation-details)
+6. [Coding features and functions](https://github.com/Alpha-30-creator/ENGG1340_2048/blob/main/README.md#coding-features-and-functions)
 
-
-## Text-based 2048 game
-This is a simple implementation of the popular 2048 game in C++, without any external libraries. The game is played on a text-based grid, with the player using the wasd keys to move numbered tiles around the board and combine them. The goal is to reach the highest score by combining the same valued tiles!
 
 ## Identification of team members:
 

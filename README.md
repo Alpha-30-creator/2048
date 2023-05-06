@@ -13,15 +13,17 @@
 This is a simple implementation of the popular 2048 game in C++, without any external libraries. The game is played on a text-based grid, with the player using the wasd keys to move numbered tiles around the board and combine them. The goal is to reach the highest score by combining the same valued tiles!
 
 ## Game Mechanics and Rules
-The text-based implementation of the popular 2048 game follows a simple yet addictive gameplay formula. The game starts with two tiles randomly placed on the board, each with a value of 2. The player uses the wasd keys (up, down, left, right) to control the movement of all the tiles on the board in one direction. The control mechanism is intuitive and easy to use, allowing players to focus on the strategy of the game.
 
+### Controls
+The player uses the wasd keys (up, down, left, right) to control the movement of all the tiles on the board in one direction. The control mechanism is intuitive and easy to use, allowing players to focus on the strategy of the game.
+
+### Goal
+The goal of the game is to merge tiles and achieve the highest score possible. When the board is completely filled with tiles and there are no more valid moves, the game is over. This provides a clear objective for players and encourages them to strategize and plan their moves carefully.
+
+### Tile Merging
 When two tiles with the same value collide, they merge into a new tile with a value equal to their sum. The player's score increases with each merge, incentivizing them to merge as many tiles as possible and reach a higher score. The game mechanics are simple yet challenging, providing a satisfying gameplay experience.
 
-The player can continue playing the game and merging tiles until there are no more valid moves available. The goal of the game is to merge tiles and achieve the highest score possible. When the board is completely filled with tiles and there are no more valid moves, the game is over. This provides a clear objective for players and encourages them to strategize and plan their moves carefully.
-
 With its straightforward gameplay mechanics and clear rules, this implementation of the 2048 game is easy to learn but difficult to master. So why wait? Start playing now and see how high you can score!
-
-We hope you enjoy playing this text-based version of 2048!
 
 ## Difficulty Levels
 This implementation of 2048 includes three levels of difficulty:

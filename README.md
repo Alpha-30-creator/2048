@@ -38,7 +38,7 @@ After the game is compiled and executed, it asks the user to enter the username.
    - This will ask the user to enter the difficulty level. It will then initialize the board with the size accordingly and start a new game.
 2. Load game
    - This is used to load any previously saved game (if the user has any) and initialize the board with the values. It will output no saved games if the user does not have any saved game.
-3. Instruction
+3. Instructions
    - This will print the instructions of the game.
 4. Quit game
    - To quit the game
@@ -60,7 +60,6 @@ After completing a game, the player's score is added to a leaderboard. The `disp
 
 ## Gameplay features
 In addition to the basic rules of the 2048 game, this implementation of the text-based 2048 game includes several features that enhance the gameplay experience:
-Enhanced Gameplay Features
 
 ### Instant Input
 To make the gameplay experience more responsive and fluid, the game has an instant input feature that eliminates the need for players to press enter after each move. With this feature, players can make moves quickly and efficiently, keeping the game's momentum going.

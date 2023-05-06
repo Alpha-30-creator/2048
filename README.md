@@ -12,14 +12,18 @@
 ## Text-Based 2048 Game
 This is a simple implementation of the popular 2048 game in C++, without any external libraries. The game is played on a text-based grid, with the player using the wasd keys to move numbered tiles around the board and combine them. The goal is to reach the highest score by combining the same valued tiles!
 
-## Rules
-The game begins with two tiles randomly placed on the board, with values of 2. The player uses the wasd keys (up, down, left, right) to move all the tiles on the board in one direction. When two tiles with the same value collide, they merge into a single tile with their sum as the new value. The player's score increases with each merge.
+## Game Mechanics and Rules
+The text-based implementation of the popular 2048 game follows a simple yet addictive gameplay formula. The game starts with two tiles randomly placed on the board, each with a value of 2. The player uses the wasd keys (up, down, left, right) to control the movement of all the tiles on the board in one direction. The control mechanism is intuitive and easy to use, allowing players to focus on the strategy of the game.
 
-The player can continue playing the game and merging tiles until there are no more valid moves available. When the board is completely filled with tiles and there are no more valid moves, the game is over.
+When two tiles with the same value collide, they merge into a new tile with a value equal to their sum. The player's score increases with each merge, incentivizing them to merge as many tiles as possible and reach a higher score. The game mechanics are simple yet challenging, providing a satisfying gameplay experience.
+
+The player can continue playing the game and merging tiles until there are no more valid moves available. The goal of the game is to merge tiles and achieve the highest score possible. When the board is completely filled with tiles and there are no more valid moves, the game is over. This provides a clear objective for players and encourages them to strategize and plan their moves carefully.
+
+With its straightforward gameplay mechanics and clear rules, this implementation of the 2048 game is easy to learn but difficult to master. So why wait? Start playing now and see how high you can score!
 
 We hope you enjoy playing this text-based version of 2048!
 
-### Difficulty Levels
+## Difficulty Levels
 This implementation of 2048 includes three levels of difficulty:
 
 - **Easy: 5x5 grid**
@@ -42,6 +46,24 @@ After the game is compiled and executed, it asks the user to enter the username.
    - This will print the instructions of the game.
 4. Quit game
    - To quit the game
+
+## Gameplay features
+In addition to the basic rules of the 2048 game, this implementation of the text-based 2048 game includes several features that enhance the gameplay experience:
+
+### Instant Input
+To make the gameplay experience more responsive and fluid, the game has an instant input feature that eliminates the need for players to press enter after each move. With this feature, players can make moves quickly and efficiently, keeping the game's momentum going.
+### User Input Validation
+To ensure that players only enter valid moves, menu options, and difficulty levels, the game has a user input validation feature. This feature checks for input errors throughout the game, preventing unexpected behaviors and making the game more enjoyable and user-friendly.
+### Reset Game
+To enable players to start over at any point in the game, the game has a reset feature. By pressing the "r" key, players can reset the game board to its initial state. A confirmation message is displayed, asking players to confirm whether they want to proceed with the reset. This feature provides a more user-friendly experience and enables players to restart the game at any stage.
+### Beat High Score
+To add an extra level of challenge to the game, the game has a feature that checks if the player has beaten their previous high score. If the player's score is higher than their previous high score, they are notified of their achievement. This feature encourages players to push themselves and achieve their personal best.
+### Quit the Game without loosing Progress
+This implementation of the text-based 2048 game allows players to save their progress and resume playing later. With the ability to save games and load them at a later time, players can enjoy the game at their own pace without fear of losing their progress. The feature also enables multiple users to save their games and compete with friends and family members. 
+To save a game, players can simply press the "q" key. This convenient and user-friendly feature enhances the gameplay experience and demonstrates the developer's commitment to providing a high-quality gaming experience for players.
+
+These enhanced gameplay features make the game more responsive, user-friendly, and challenging. They demonstrate the developer's commitment to providing a high-quality gaming experience for players.
+
 ## Implementation details
 The game is implemented using these key functions:
 
@@ -58,20 +80,7 @@ The `check_finish` function checks if the game is over. It returns true if the b
 ### Leaderboard
 After completing a game, the player's score is added to a leaderboard. The `display_leaderboard` function displays the top ten scores (for all levels), allowing players to compete against each other for the highest score. The leaderboard is stored locally and persists between game sessions.
 
-## Gameplay features
-In addition to the basic rules of the 2048 game, this implementation of the text-based 2048 game includes several features that enhance the gameplay experience:
 
-### Instant Input
-To make the gameplay experience more responsive and fluid, the game has an instant input feature that eliminates the need for players to press enter after each move. With this feature, players can make moves quickly and efficiently, keeping the game's momentum going.
-### User Input Validation
-To ensure that players only enter valid moves, menu options, and difficulty levels, the game has a user input validation feature. This feature checks for input errors throughout the game, preventing unexpected behaviors and making the game more enjoyable and user-friendly.
-### Reset Game
-To enable players to start over at any point in the game, the game has a reset feature. By pressing the "r" key, players can reset the game board to its initial state. A confirmation message is displayed, asking players to confirm whether they want to proceed with the reset. This feature provides a more user-friendly experience and enables players to restart the game at any stage.
-### Beat High Score
-To add an extra level of challenge to the game, the game has a feature that checks if the player has beaten their previous high score. If the player's score is higher than their previous high score, they are notified of their achievement. This feature encourages players to push themselves and achieve their personal best.
-### Quit the Game without loosing Progress
-This implementation of the text-based 2048 game allows players to save their progress and resume playing later. With the ability to save games and load them at a later time, players can enjoy the game at their own pace without fear of losing their progress. The feature also enables multiple users to save their games and compete with friends and family members. 
-To save a game, players can simply press the "q" key. This convenient and user-friendly feature enhances the gameplay experience and demonstrates the developer's commitment to providing a high-quality gaming experience for players.
 ## Coding features and functions
 To create a robust and efficient implementation of the text-based 2048 game, this game has incorporates several coding features and functions that enhance the game's functionality and performance:
 ### Use of Standard Template Library

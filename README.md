@@ -1,4 +1,4 @@
-# 2048++ // Group # 63
+# 2048++ 
 This is a simple implementation of the popular 2048 game in C++, without any external libraries.
 
 ## Table of Contents
